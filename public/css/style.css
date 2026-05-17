@@ -2720,8 +2720,18 @@ hr {
     position: relative;
     background-image: url(../img/hero/h1_hero.png);
     background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover
+    background-position: center right;
+    background-size: cover;
+    /* 💡 내부 요소들이 영역 밖으로 튀어나가지 않도록 가려줌 */
+    overflow: hidden;
+}
+
+/* 💡 노트북/태블릿/모바일 전체(991px 이하)에서 작은 배경으로 일괄 적용 */
+@media (max-width: 991px) {
+    .slider-area {
+        background-image: url(../img/hero/h1_hero_small.png) !important;
+        background-position: center center !important;
+    }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {

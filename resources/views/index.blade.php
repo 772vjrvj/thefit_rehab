@@ -17,9 +17,9 @@
                                     </a>
                                 </div>
                                 <div class="hero__caption">
-                                    <h1 data-animation="fadeInUp" data-delay=".3s">Health is wealth  keep it healthy </h1>
-                                    <p data-animation="fadeInUp" data-delay=".6s">Almost before we knew it, we<br> had left the ground</p>
-                                    <a href="/services" class="btn" data-animation="fadeInLeft" data-delay=".3s">Take a Service</a>
+                                    <h1 data-animation="fadeInUp" data-delay=".3s">더 전문적인 재활,<br>더 편안해진 생활</h1>
+                                    <p data-animation="fadeInUp" data-delay=".6s">어느새 통증은 사라지고,<br>가뿐해진 몸을 마주하게 될 거예요</p>
+                                    <a href="#" class="btn" data-animation="fadeInLeft" data-delay=".3s">맞춤 상담 받기</a>
                                 </div>
                             </div>
                         </div>
@@ -39,9 +39,9 @@
                                     </a>
                                 </div>
                                 <div class="hero__caption">
-                                    <h1 data-animation="fadeInUp" data-delay=".3s">Health is wealth  keep it healthy </h1>
-                                    <p data-animation="fadeInUp" data-delay=".6s">Almost before we knew it, we<br> had left the ground</p>
-                                    <a href="#" class="btn" data-animation="fadeInLeft" data-delay=".3s">Take a Service</a>
+                                    <h1 data-animation="fadeInUp" data-delay=".3s">더 전문적인 재활,<br>더 편안해진 생활</h1>
+                                    <p data-animation="fadeInUp" data-delay=".6s">어느새 통증은 사라지고,<br>가뿐해진 몸을 마주하게 될 거예요</p>
+                                    <a href="#" class="btn" data-animation="fadeInLeft" data-delay=".3s">맞춤 상담 받기</a>
                                 </div>
                             </div>
                         </div>
