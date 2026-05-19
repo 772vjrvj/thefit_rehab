@@ -58,7 +58,7 @@
                 <div class="col-lg-7 col-md-12">
                     <!-- about-img -->
                     <div class="about-img ">
-                        <img src="{{ asset('img/gallery/about.png') }}" alt="">
+                        <img src="{{ asset('img/gallery/about4.png') }}" alt="">
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-12">

@@ -80,7 +80,7 @@
 
     5-2. IntelliJ 버전 관리(VCS) 및 .gitignore 최적화
         로컬 개발 환경 설정(`.env`) 및 IntelliJ 개인 설정(`.idea`)이 Git 원격 저장소에 올라가지 않도록 필터링을 걸어줍니다.
-        add to VCS 
+        add to VCS
 
     5-3. 프로젝트 최상위에 생성된 **`.gitignore`** 파일을 엽니다.
 
@@ -89,7 +89,7 @@
         .idea/
 
   6. 서버 실행
-    6-1. key생성 
+    6-1. key생성
       환경 변수(.env) 파일이 정상 위치에 있는지 확인한 후 아래 명령어를 입력합니다.
       php artisan key:generate
 
@@ -139,3 +139,7 @@ Step 2. 메인 HTML 코드를 라라벨로 가져오기
 그 안에 이미 만들어져 있는 welcome.blade.php 파일을 엽니다.
 
 기존에 있던 라라벨 기본 코드를 전부 지우고(비우기), 아까 복사한 index.html 내용을 그대로 붙여넣기(Ctrl + V) 한 뒤 저장합니다.
+
+
+
+

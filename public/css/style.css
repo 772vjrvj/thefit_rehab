@@ -2597,6 +2597,11 @@ hr {
     top: 100%
 }
 
+.header-area .logo img{
+    height: 50px;
+}
+
+
 .header-transparent {
     position: absolute;
     top: 0;

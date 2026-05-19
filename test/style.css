@@ -1,0 +1,1525 @@
+/* ==========================================================================
+   01. ROOT VARIABLES & RESET (설정 및 리셋)
+   ========================================================================== */
+:root {
+    --primary-pastel: rgba(228, 247, 225, 0.4);
+    --primary-glow: rgba(204, 242, 201, 0.6);
+    --text-dark: #2c352e;
+    --text-gray: #606a61;
+    --bg-cream: #fafbf9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+    letter-spacing: -0.03em;
+}
+
+body {
+    background-color: #ffffff;
+    color: var(--text-dark);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 글로벌 감싸기 박스 */
+#site-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+/* ==========================================================================
+   02. SITE HEADER & NAVIGATION (헤더 및 네비게이션)
+   ========================================================================== */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(228, 247, 225, 0.5);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.site-header.scrolled {
+    height: 68px;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+}
+
+.logo img {
+    max-height: 45px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.site-header.scrolled .logo img {
+    max-height: 40px;
+}
+
+.logo img:hover {
+    transform: scale(1.03);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #3b5941;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: #a4f4e2; /* 맑고 옅은 프리미엄 녹색 선으로 변경 */
+    border-radius: 2px;
+    transition: width 0.3s ease;
+
+    /* 🧼 뿌옇게 번지던 번인 이펙트(box-shadow)를 완전히 제거했습니다! */
+    box-shadow: none;
+}
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 1100;
+    padding: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background-color: var(--text-dark);
+    margin: 6px 0;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+
+/* ==========================================================================
+   03. MAIN VISUAL SLIDER (메인 슬라이더 섹션 - 화사한 톤 및 로고 가독성 보정)
+   ========================================================================== */
+.main-slider-section {
+    position: relative;
+    width: 100%;
+    height: 72vh;
+    margin-top: 80px;
+    overflow: hidden;
+    background: var(--bg-cream);
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.8s ease-in-out;
+
+    /* 📸 메인 슬라이더 이미지도 아래쪽과 동일하게 화사한 옛날 사진 필터 적용 */
+    filter: brightness(1.12) contrast(0.88) saturate(0.75) sepia(0.15);
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* 슬라이더 배경 리소스 매핑 */
+.slide-1 { background: url('img/main/main1.png') center /cover no-repeat; }
+.slide-2 { background: url('img/main/main2.png') center 20%/cover no-repeat; }
+.slide-3 { background: url('img/main/main3.png') center /cover no-repeat; }
+.slide-4 { background: url('img/main/main4.png') center /cover no-repeat; }
+
+/* 🧼 기존의 어두운 검정색 마스크 오버레이 막을 완전히 제거하여 사진을 환하게 살립니다 */
+.slide::before {
+    display: none;
+}
+
+/* 중앙 고정 브랜딩 로고 박스 */
+.center-logo-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-image-wrapper {
+    width: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+}
+
+/* style.css에서 이 부분을 찾아 filter 속성만 교체해 줍니다 */
+.logo-image-wrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+
+    /* 💡 그림자 두께를 키우고 퍼짐(Blur) 값을 넓힌 다중 레이어 시스템 */
+    filter: brightness(0) invert(1)
+    drop-shadow(0 3px 6px rgba(0, 0, 0, 0.25))    /* 선명한 외곽선 보정 */
+    drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3))    /* 중간 범위 음영 추가 */
+    drop-shadow(0 20px 50px rgba(0, 0, 0, 0.25)); /* 넓고 은은하게 퍼지는 그림자 */
+}
+
+/* 슬라이더 수동 컨트롤 화살표 */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.25); /* 밝아진 화면에 맞춰 컨트롤 버튼도 살짝 더 투명-화사하게 */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.slider-arrow:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.slider-arrow.prev { left: 40px; }
+.slider-arrow.next { right: 40px; }
+
+.slider-arrow svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    /* 화살표 아이콘 뒤에도 미세한 섀도우를 주어 시인성을 높입니다 */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+
+/* ==========================================================================
+   04. INTRO SECTION (센터 소개 영역)
+   ========================================================================== */
+.intro-section {
+    width: 100%;
+    padding: 120px 0;
+    background-color: #ffffff;
+}
+
+.intro-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.intro-top-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.intro-top-header .sub-accent {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-gray);
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+}
+
+.intro-top-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text-dark);
+    letter-spacing: -0.04em;
+}
+
+.intro-body-content {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.intro-text-box {
+    flex: 1;
+    text-align: center;
+}
+
+.intro-description {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.intro-description .highlight-p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #3b5941;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.intro-description p {
+    font-size: 15px;
+    color: var(--text-gray);
+    line-height: 1.7;
+    font-weight: 300;
+    word-break: keep-all;
+}
+
+.intro-signature {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.08);
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: 1.6;
+    text-align: center;
+}
+
+.intro-signature span {
+    display: block;
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #3b5941;
+    text-align: center;
+}
+
+.pc-only {
+    display: block;
+}
+
+.intro-image-box {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.rounded-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    height: 450px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    background-color: var(--bg-cream);
+}
+
+.rounded-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+
+    /* 📸 일본 옛날 아날로그 필름 감성 필터 세팅 */
+    /* 채도를 낮추고 바랜 느낌(sepia)과 미백 광채(brightness)를 주어 투명하고 아련한 톤을 만듭니다. */
+    filter: brightness(1.1) contrast(0.9) saturate(0.7) sepia(0.18);
+    opacity: 0.85; /* 약간 투명하게 설정 */
+}
+
+.rounded-image-wrapper:hover img {
+    transform: scale(1.03);
+}
+
+
+/* ==========================================================================
+   05. PROGRAM SECTION (프로그램 프로세스 카드 영역)
+   ========================================================================== */
+.program-section {
+    width: 100%;
+    padding: 120px 0;
+    background-color: #fafbf9;
+}
+
+.program-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.program-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.program-header h2 {
+    font-size: 34px;
+    font-weight: 700;
+    margin: 12px 0;
+    color: var(--text-dark);
+    letter-spacing: -0.04em;
+}
+
+.header-desc {
+    font-size: 15px;
+    color: var(--text-gray);
+    font-weight: 300;
+}
+
+.program-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.program-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.card-image-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.05);
+    background-color: #f0f0f0;
+    margin-bottom: 18px;
+}
+
+/* style.css에서 이 부분을 찾아 filter와 opacity 속성을 교체해 줍니다 */
+.card-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+
+    /* 📸 하얗게 날아간 무드를 잡고, 선명하고 깊이감 있게 보정 */
+    /* brightness를 낮춰 하얀 막을 걷어내고, contrast를 올려 윤곽선을 또렷하게 만듭니다. */
+    filter: brightness(0.95) contrast(1.15) saturate(0.85) sepia(0.12);
+
+    /* 투명도를 0.85에서 0.95로 올려 이미지가 흐리멍덩하지 않고 선명하게 보이도록 합니다 */
+    opacity: 0.87;
+}
+
+/* 이미지 프레임 상단에 미세한 흰색/파스텔빛 감성 필름 레이어를 얹어 물빠진 투명함을 더해줍니다. */
+.rounded-image-wrapper::after,
+.card-image-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(67, 157, 133, 0.02) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(80, 184, 156, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    text-align: center;
+    z-index: 5;
+}
+
+.card-overlay p {
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 400;
+    word-break: keep-all;
+}
+
+.program-card:hover .card-image-box img {
+    transform: scale(1.08);
+}
+
+.program-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.step-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #439d85;
+    background-color: rgba(80, 184, 156, 0.1);
+    padding: 4px 10px;
+    border-radius: 30px;
+    letter-spacing: 0.05em;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 8px;
+}
+
+.card-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: -0.03em;
+}
+
+
+/* ==========================================================================
+   05-2. WHY THE MATCHUM (이미지 내부 인텍스트 + 좌우 화살표 커스텀 무드)
+   ========================================================================== */
+.why-section {
+    width: 100%;
+    padding: 120px 0;
+    background-color: #ffffff;
+}
+
+.why-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.why-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.why-header .sub-accent {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-gray);
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+}
+
+.why-header h2 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #3b5941;
+    letter-spacing: -0.04em;
+}
+
+/* 슬라이더 메인 래퍼 박스 */
+.why-slider-wrapper {
+    position: relative;
+    max-width: 980px; /* ↔️ 기존 860px에서 980px로 대폭 확장하여 카드 크기를 키움 */
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.why-slider {
+    position: relative;
+    width: 100%;
+    height: 580px; /* ↕️ 높이를 480px에서 580px로 시원하게 확대 */
+}
+
+.why-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(30px); /* 오른쪽에서 자연스럽게 진입하는 연출 */
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    visibility 0.8s;
+    z-index: 1;
+}
+
+.why-slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    z-index: 2;
+}
+
+/* 가운데 큰 이미지 프레임 박스 */
+.why-image-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(59, 89, 65, 0.08);
+}
+
+.why-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* ☀️ 햇살이 쨍하게 부서지는 완전 화사하고 투명한 우윳빛 레이어 필터 */
+    /* brightness를 1.28까지 대폭 끌어올려 대낮의 자연광을 연출하고,
+       contrast를 0.85로 부드럽게 뭉개 투명하고 아련한 공기감을 만듭니다. */
+    filter: brightness(1.28) contrast(0.85) saturate(0.95) sepia(0.03);
+    opacity: 1;
+
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* style.css에서 .why-image-overlay 부분을 찾아 이 코드로 교체해 주세요 */
+.why-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* ☀️ 우측 위(45도 상단)에서 좌측 아래로 쏟아지는 투명한 태양광 연출 */
+    /* 우측 상단(225도 방향)에서 백색 햇살이 강하게 드리우고,
+       중앙을 거쳐 좌측 하단(글씨가 있는 곳)으로 갈수록 자연스러운 암전 섀도우를 깔아
+       흰색 글씨들의 시인성과 가독성을 완벽하게 확보합니다. */
+    background: linear-gradient(225deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.2) 35%,
+    rgba(0, 0, 0, 0.1) 60%,
+    rgba(0, 0, 0, 0.68) 100% /* 👈 글씨가 있는 바닥면 암부를 0.6에서 0.68로 조금 더 단단하게 보정 */
+    );
+
+    /* 햇빛이 통창으로 투명하게 스며드는 무드를 돕는 필터 층 */
+    backdrop-filter: brightness(1.08);
+    -webkit-backdrop-filter: brightness(1.08);
+
+    display: flex;
+    align-items: flex-end;
+    padding: 50px 60px;
+    z-index: 3;
+}
+
+/* 이미지 내부 텍스트 스타일링 */
+.why-text-content {
+    max-width: 580px;
+    text-align: left; /* 잡지 레이아웃 느낌으로 좌측 정렬 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.theme-number {
+    font-size: 11px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 4px 12px;
+    border-radius: 30px;
+    letter-spacing: 0.05em;
+    margin-bottom: 14px;
+}
+
+.why-text-content h3 {
+    font-size: 32px;            /* 📐 기존 26px에서 32px로 대폭 키워 시선 집중 */
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;        /* 글씨가 커진 만큼 본문과의 간격도 살짝 조정 */
+    letter-spacing: -0.03em;
+    line-height: 1.3;
+
+    /* 💡 아주 밝은 빛 위에서도 글자 외곽선이 깨지지 않도록 진하고 넓게 퍼지는 4중 그림자 */
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.45),
+        0 4px 12px rgba(0, 0, 0, 0.4),
+        0 12px 28px rgba(0, 0, 0, 0.3),
+        0 25px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* 2. 본문 설명 (중간 글씨) 수정 */
+.why-text-content p {
+    font-size: 16px;            /* 📐 기존 14px에서 16px로 키워 가독성 완벽 확보 */
+    color: #ffffff;             /* 투명도 없는 순수 흰색으로 고정 */
+    line-height: 1.7;           /* 줄간격을 넓혀 시원하게 읽히도록 배치 */
+    font-weight: 400;
+    margin-bottom: 28px;
+    word-break: keep-all;
+
+    /* 💡 작은 글씨들이 뭉개지지 않고 스며들듯 또렷해지는 3중 미세 그림자 */
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.5),
+        0 6px 15px rgba(0, 0, 0, 0.45),
+        0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* 이미지 내부 흰색 감성 버튼 */
+/* 1. 자세히 보기 버튼 전체 크기 및 두께 키우기 */
+.btn-detail {
+    font-size: 16px;       /* font-size를 기존 13px에서 16px로 시원하게 확대 */
+    font-weight: 700;      /* 글씨 두께를 조금 더 두껍고 명확하게 변경 */
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;              /* 글씨와 화살표 아이콘 사이 간격 확대 */
+    padding: 8px 0;        /* 클릭 영역 확보를 위해 위아래 여백 추가 */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.6); /* 밑줄 두께를 1px에서 2px로 두껍게 변경 */
+    transition: all 0.3s ease;
+
+    /* 배경이 아주 밝을 때를 대비해 버튼 세트에도 은은한 그림자 추가 */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 2. 버튼이 커짐에 따라 내부에 있는 화살표 아이콘 크기 맞추기 */
+.btn-detail svg {
+    width: 16px;           /* 아이콘 크기도 기존 14px에서 16px로 글씨와 정렬 일치 */
+    height: 16px;
+    stroke: #ffffff;
+    stroke-width: 2.5;
+    fill: none;
+    transition: transform 0.3s ease;
+
+    /* 아이콘 시인성 보정용 그림자 */
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+}
+
+/* 마우스 올렸을 때(Hover) 스타일 디테일 */
+.btn-detail:hover {
+    color: rgba(255, 255, 255, 1);
+    border-color: #ffffff; /* 마우스 올리면 밑줄이 완전한 흰색으로 진해짐 */
+}
+
+.btn-detail:hover svg {
+    transform: translateX(6px); /* 마우스 올렸을 때 화살표가 오른쪽으로 밀리는 거리 살짝 확장 */
+}
+
+/* ↕️ 추가된 수동 제어 좌우 화살표 버튼 */
+.why-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer; /* 👆 손가락 모양 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.why-arrow:hover {
+    background: rgba(255, 255, 255, 0.4);
+    scale: 1.05;
+}
+
+.why-arrow.prev { left: -24px; } /* 박스 바깥으로 살짝 걸치게 하여 시원한 뷰 확보 */
+.why-arrow.next { right: -24px; }
+
+.why-arrow svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* 하단 이동 도트 버튼 (인디케이터) */
+.why-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.why-indicators .dot {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    cursor: pointer; /* 💡 마우스 올리면 손가락 모양 나오도록 수정 완료 */
+    transition: all 0.3s ease;
+}
+
+.why-indicators .dot.active {
+    background-color: #3b5941;
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* 애니메이션 감지 전초기 상태 */
+.why-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s cubic-bezier(0.215, 0.610, 0.355, 1),
+    transform 1.2s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+.why-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==========================================================================
+   06. BRANCH SECTION (지점 안내 영역)
+   ========================================================================== */
+.branch-section {
+    width: 100%;
+    padding: 100px 0;
+
+    /* 🎨 상단 섹션들과 고급스럽게 대비되도록 따뜻한 크림 베이지 배경색 적용 */
+    background-color: var(--bg-cream); /* 또는 #fafbf9 */
+
+    /* 자연스러운 구분을 위한 은은한 상단 경계선 */
+    border-top: 1px solid rgba(67, 157, 133, 0.08);
+}
+
+.branch-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.branch-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.branch-header h2 {
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #111111;
+}
+
+.branch-header h2 span {
+    font-weight: 700;
+    color: #3b5941;
+}
+
+.header-line {
+    width: 40px;
+    height: 1px;
+    background-color: #999999;
+    margin: 20px auto;
+}
+
+.branch-accent-desc {
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+    letter-spacing: -0.03em;
+}
+
+.branch-sub-desc {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.branch-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 💡 배경이 크림색으로 바뀌었으므로, 흰색 카드가 더 맑고 선명하게 도드라지도록 그림자 튜닝 */
+.branch-card {
+    position: relative;
+    background: #ffffff; /* 크림색 배경 위에 순백색 카드가 올라가서 엄청 깔끔해집니다 */
+    border-radius: 20px;
+    min-height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+
+    /* 얇은 에메랄드 테두리와 부드러운 대형 그림자로 프리미엄 무드 강조 */
+    border: 1px solid rgba(67, 157, 133, 0.12);
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.01),
+        0 10px 30px -5px rgba(59, 89, 65, 0.05),
+        0 30px 60px -10px rgba(0, 0, 0, 0.02);
+
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.branch-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    transition: color 0.3s ease;
+}
+
+.branch-more {
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #888888;
+    letter-spacing: 0.05em;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #b5b5b5;
+    transition: all 0.3s ease;
+}
+
+/* 카드 마우스 호버 상태 */
+.branch-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(80, 184, 156, 0.4);
+    box-shadow:
+        0 20px 40px -5px rgba(80, 184, 156, 0.12),
+        0 30px 60px -15px rgba(0, 0, 0, 0.05);
+}
+
+.branch-card:hover .branch-title {
+    color: #439d85;
+}
+
+.branch-card:hover .branch-more {
+    color: #439d85;
+    border-color: #439d85;
+}
+
+
+/* ==========================================================================
+   06-1. SCROLL REVEAL EFFECT (스크롤 감지 애니메이션 효과)
+   ========================================================================== */
+/* 처음 상태: 투명하고 하단 40px 위치 대기 */
+/* 🧼 요청하신 대로 뿌연 블러(blur) 효과는 완벽하게 걷어내고 선명하게 시작합니다! */
+.fade-init {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s cubic-bezier(0.215, 0.610, 0.355, 1),
+    transform 1.2s cubic-bezier(0.215, 0.610, 0.355, 1);
+    will-change: opacity, transform;
+}
+
+/* 화면 감지 진입 시 상태: 부드럽게 위로 올라오며 제자리 복귀 */
+.fade-init.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* [시간차 딜레이 세팅] 큰 뼈대가 올라오고 0.2~0.4초 뒤에 알맹이(이미지, 카드)들이 따라올라옵니다. */
+.intro-section.is-visible .rounded-image-wrapper {
+    transition-delay: 0.25s;
+}
+
+.program-grid .program-card:nth-child(1) { transition-delay: 0.1s; }
+.program-grid .program-card:nth-child(2) { transition-delay: 0.25s; }
+.program-grid .program-card:nth-child(3) { transition-delay: 0.4s; }
+.program-grid .program-card:nth-child(4) { transition-delay: 0.55s; }
+
+
+/* ==========================================================================
+   07. REHAB CONTACT PREVIEW SECTION (제공 시안 3열 레이아웃 스타일)
+   ========================================================================== */
+.rehab-preview-section {
+    width: 100%;
+    padding: 120px 0;
+    background-color: #ffffff; /* 시안처럼 깨끗하고 넓어 보이는 화이트 베이스 */
+    position: relative;
+}
+
+.rehab-preview-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+/* 폰트 굵기 대비가 확실한 상단 타이틀 세팅 */
+.rehab-preview-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.rehab-preview-header h2 {
+    font-size: 38px;
+    font-weight: 300; /* 앞부분은 얇고 세련되게 */
+    color: #2c352e;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+}
+
+.rehab-preview-header h2 span {
+    font-weight: 800; /* 뒷부분은 묵직하고 굵게 포인트 */
+    color: #111111;
+}
+
+.rehab-preview-header .header-line {
+    width: 35px;
+    height: 1px;
+    background-color: #bbbbbb;
+    margin: 25px auto 0 auto;
+}
+
+/* ↔️ 핵심: 시안 이미지 속 완벽한 가로 3열 나열 구조 */
+.rehab-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 90px;
+    position: relative;
+}
+
+/* 개별 수직형 미니멀 카드 */
+.rehab-clean-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 40px;
+    position: relative;
+}
+
+/* ✨ 시안 분위기를 내기 위해 카드와 카드 사이에 은은한 가로 세로 절취선 기둥 추가 */
+.rehab-clean-card:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 15%;
+    width: 1px;
+    height: 70%;
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+/* 동그란 아이콘 백그라운드 프레임 */
+.card-icon-box {
+    width: 64px;
+    height: 64px;
+    background: #f2f5f3; /* 맑고 옅은 회록색빛 도는 아주 연한 원 */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.card-icon-box svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: #3b5941; /* 센터 메인 시그니처 컬러 */
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* 카드 텍스트 박스 정렬 */
+.card-text-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+/* 시안의 자잘하고 정돈된 한글 텍스트 */
+.card-desc {
+    font-size: 14.5px;
+    color: var(--text-gray);
+    line-height: 1.65;
+    font-weight: 400;
+    word-break: keep-all;
+}
+
+/* 하단의 연한 영문 태그 */
+.card-sub-tag {
+    font-size: 13px;
+    color: #aaaaaa;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+/* 깔끔한 호버(Hover) 상호작용 디테일 */
+.rehab-clean-card:hover .card-icon-box {
+    transform: translateY(-5px);
+    background: #3b5941;
+}
+
+.rehab-clean-card:hover .card-icon-box svg {
+    stroke: #ffffff;
+}
+
+.rehab-clean-card:hover .card-desc {
+    color: #111111;
+}
+
+/* 하단 문의하기 버튼 매칭 */
+.rehab-preview-action {
+    text-align: center;
+}
+
+/* style.css에서 이 부분을 찾아 속성값(padding, font-size 등)을 교체해 줍니다 */
+.btn-preview-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;                     /* 아이콘과의 간격 슬림화 */
+    background-color: #3b5941;    /* 시그니처 딥그린 */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px 36px;           /* ↕️ 위아래/좌우 두께를 대폭 줄여 슬림하고 예쁘게 변경 */
+    border-radius: 30px;          /* 알약 형태는 유지하되 높이에 맞게 조절 */
+    font-size: 15px;              /* 📐 너무 부담스럽지 않은 콤팩트한 글씨 크기 */
+    font-weight: 500;              /* 굵기를 700에서 500으로 낮춰 더 정갈하고 가볍게 */
+    letter-spacing: -0.02em;
+    box-shadow: 0 4px 15px rgba(59, 89, 65, 0.1); /* 그림자도 은은하게 축소 */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 버튼 내부 화살표 아이콘 크기 동시 보정 */
+.btn-preview-contact svg {
+    width: 16px;                  /* 아이콘 크기도 20px에서 16px로 축소 */
+    height: 16px;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 2.2;
+    transition: transform 0.3s ease;
+}
+
+/* 마우스 호버(Hover) 효과도 콤팩트하게 보정 */
+.btn-preview-contact:hover {
+    background-color: #439d85;
+    box-shadow: 0 8px 20px rgba(67, 157, 133, 0.2);
+    transform: translateY(-1px);  /* 커지는 효과(scale) 대신 위로 1px만 살짝 들리게 변경 */
+}
+
+.btn-preview-contact:hover svg {
+    transform: translateX(6px);
+}
+
+
+/* ==========================================================================
+   08. SITE FOOTER (하단 정보 영역 - 중앙 정렬 감성 스타일)
+   ========================================================================== */
+.site-footer {
+    width: 100%;
+    background-color: #fafbf9; /* 사이트의 따뜻한 감성 크림색 배경 사용 */
+    padding: 60px 0 40px 0;
+    border-top: 1px solid rgba(67, 157, 133, 0.12); /* 은은한 옅은 녹색 경계선 */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 자식 요소들을 가로축 기준 중앙 정렬 */
+    text-align: center; /* 텍스트 본문 전체 중앙 정렬 */
+}
+
+/* 푸터 상단 타이틀/슬로건 */
+.footer-brand {
+    margin-bottom: 30px;
+}
+
+.footer-brand h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #3b5941; /* 브랜드 메인 녹색 톤앤매너 */
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+
+.footer-brand .footer-slogan {
+    font-size: 13px;
+    color: #889489;
+    font-weight: 400;
+}
+
+/* 푸터 중앙 상세 정보 */
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 35px;
+}
+
+.footer-info .info-row {
+    font-size: 13px;
+    color: var(--text-gray); /* 기존 설정된 회록색 텍스트 컬러 */
+    line-height: 1.6;
+    font-weight: 300;
+    word-break: keep-all;
+}
+
+/* 폰트 굵기 조절 및 링크 컬러 */
+.footer-info .info-row span {
+    display: inline-block;
+}
+
+.footer-info .info-row a {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.footer-info .info-row a:hover {
+    color: #439d85; /* 마우스 올렸을 때 맑은 에메랄드 녹색으로 하이라이트 */
+}
+
+/* 세로 바 (|) 스타일 정의 */
+.footer-info .divider {
+    color: rgba(0, 0, 0, 0.1);
+    margin: 0 8px;
+    font-weight: 300;
+}
+
+/* 푸터 최하단 카피라이트 선 및 패딩 */
+.footer-bottom {
+    width: 100%;
+    max-width: 600px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(67, 157, 133, 0.15); /* 중앙 구분 절취선 무드 */
+}
+
+.footer-bottom .copyright {
+    font-size: 12px;
+    color: #a0aaa1;
+    letter-spacing: 0.02em;
+    font-family: 'Arial', sans-serif;
+}
+
+
+
+/* ==========================================================================
+   07. RESPONSIVE MEDIA QUERIES (반응형 레이아웃 분기점)
+   ========================================================================== */
+
+/* --- 태블릿 및 노트북 구간 (최대 1024px) --- */
+@media (max-width: 1024px) {
+    .program-container {
+        padding: 0 40px;
+    }
+    .program-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+/* --- 중소형 태블릿 구간 (최대 992px) --- */
+@media (max-width: 992px) {
+    .intro-container {
+        padding: 0 30px;
+    }
+    .intro-top-header h2 {
+        font-size: 30px;
+    }
+    .intro-body-content {
+        gap: 40px;
+    }
+    .rounded-image-wrapper {
+        height: 380px;
+    }
+    .rehab-preview-grid {
+        grid-template-columns: 1fr; /* 화면 좁아지면 무너지지 않게 수직 1열 정렬 */
+        gap: 50px;
+        margin-bottom: 60px;
+    }
+    .rehab-clean-card {
+        padding: 0 20px;
+    }
+    .rehab-clean-card:not(:last-child)::after {
+        display: none; /* 세로 경계 가이드선은 모바일에서 제거 */
+    }
+    .card-icon-box {
+        margin-bottom: 20px;
+    }
+}
+
+/* --- 모바일 디바이스 구간 (최대 768px) --- */
+@media (max-width: 768px) {
+    .site-header {
+        padding: 0 24px;
+        height: 70px;
+    }
+    .site-header.scrolled {
+        height: 60px;
+    }
+    .logo img {
+        max-height: 38px;
+    }
+    .site-header.scrolled .logo img {
+        max-height: 34px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-container {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        border-bottom: 0 solid rgba(228, 247, 225, 0.5);
+    }
+    .nav-container.active {
+        max-height: 450px;
+        border-bottom: 1px solid rgba(228, 247, 225, 0.5);
+    }
+    .nav-menu {
+        flex-direction: column;
+        gap: 0;
+        padding: 10px 0;
+    }
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-menu a {
+        display: block;
+        padding: 20px 0;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+    }
+    .nav-menu li:last-child a {
+        border-bottom: none;
+    }
+    .nav-menu a::after {
+        display: none;
+    }
+
+    .main-slider-section {
+        height: 55vh;
+        margin-top: 70px;
+    }
+    .logo-image-wrapper {
+        width: 240px;
+    }
+    .slider-arrow {
+        width: 44px;
+        height: 44px;
+    }
+    .slider-arrow.prev { left: 16px; }
+    .slider-arrow.next { right: 16px; }
+
+    .intro-section {
+        padding: 80px 0;
+    }
+    .intro-top-header {
+        margin-bottom: 40px;
+    }
+    .intro-top-header h2 {
+        font-size: 24px;
+    }
+    .intro-body-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .intro-text-box {
+        flex: 1;
+        text-align: center;
+    }
+    .intro-description .highlight-p {
+        font-size: 16px;
+    }
+    .intro-description p {
+        font-size: 14px;
+    }
+    .intro-image-box {
+        width: 100%;
+        justify-content: center;
+    }
+    .rounded-image-wrapper {
+        max-width: 100%;
+        height: 320px;
+    }
+    .intro-signature {
+        margin-top: 16px;
+        padding-top: 16px;
+    }
+    .intro-signature span {
+        font-size: 15px;
+        margin-top: 10px;
+        padding-right: 10px;
+    }
+    .pc-only {
+        display: none;
+    }
+
+    .program-section {
+        padding: 80px 0;
+    }
+    .program-container {
+        padding: 0 24px;
+    }
+    .program-grid {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+        margin: 0 auto;
+        gap: 40px;
+    }
+    .program-header h2 {
+        font-size: 26px;
+    }
+
+
+    .why-section { padding: 80px 0; }
+    .why-container { padding: 0 24px; }
+    .why-header h2 { font-size: 26px; }
+    .why-slider { height: 400px; }
+    .why-image-overlay { padding: 30px; }
+    .why-text-content h3 { font-size: 20px; }
+    .why-text-content p { font-size: 13px; margin-bottom: 16px; }
+    .why-arrow { width: 40px; height: 40px; }
+    .why-arrow.prev { left: 10px; }
+    .why-arrow.next { right: 10px; }
+
+
+    .branch-section {
+        padding: 70px 0;
+    }
+    .branch-container {
+        padding: 0 24px;
+    }
+    .branch-header h2 {
+        font-size: 26px;
+    }
+    .branch-accent-desc {
+        font-size: 16px;
+    }
+    .branch-sub-desc {
+        font-size: 13px;
+        word-break: keep-all;
+    }
+    .branch-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 340px;
+    }
+    .branch-card {
+        min-height: 200px;
+        padding: 30px;
+    }
+    .branch-title {
+        font-size: 20px;
+    }
+    .branch-more {
+        bottom: 24px;
+        left: 30px;
+    }
+
+    .rehab-preview-section { padding: 80px 0; }
+    .rehab-preview-container { padding: 0 24px; }
+    .rehab-preview-header h2 { font-size: 28px; }
+    .btn-preview-contact { width: 100%; padding: 18px 24px; font-size: 15px; }
+
+
+    .site-footer {
+        padding: 45px 0 30px 0;
+    }
+
+    .footer-info .info-row {
+        font-size: 12px;
+    }
+
+    /* 모바일 좁은 화면에서는 세로바(|)를 숨기고 줄바꿈 처리하여 가독성 확보 */
+    .footer-info .info-row .divider {
+        display: none;
+    }
+    .footer-info .info-row span {
+        display: block;
+        margin-bottom: 4px;
+    }
+    .footer-info .info-row span:last-child {
+        margin-bottom: 0;
+    }
+}

@@ -66,7 +66,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-7 col-md-12">
                     <div class="about-img ">
-                        <img src="{{ asset('img/gallery/about.png') }}" alt="">
+                        <img src="{{ asset('img/gallery/about3.png') }}" alt="">
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-12">
