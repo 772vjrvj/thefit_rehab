@@ -96,7 +96,7 @@ body {
 }
 
 .nav-menu a:hover {
-    color: #3b5941;
+    color: #1e1e1e;
 }
 
 .nav-menu a::after {
@@ -107,7 +107,7 @@ body {
     transform: translateX(-50%);
     width: 0;
     height: 3px;
-    background: #a4f4e2; /* 맑고 옅은 프리미엄 녹색 선으로 변경 */
+    background: #439D85; /* 맑고 옅은 프리미엄 녹색 선으로 변경 */
     border-radius: 2px;
     transition: width 0.3s ease;
 
