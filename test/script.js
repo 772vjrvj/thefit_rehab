@@ -250,4 +250,25 @@ document.addEventListener('DOMContentLoaded', () => {
         startGalleryAutoPlay();
     }
 
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const mainImg = document.querySelector('#main-img img');
+    const mainText = document.querySelector('#main-text');
+
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            mainImg.src = item.getAttribute('data-img');
+
+            mainText.style.opacity = 0;
+            setTimeout(() => {
+                // 이름과 내용 영역 분리
+                document.querySelector('#instructor-name').innerText = `${item.getAttribute('data-name')} 강사`;
+                document.querySelector('#instructor-desc').innerHTML = `
+                <p>${item.getAttribute('data-desc')}</p>
+                <p>더맞춤의 재활 철학을 바탕으로 회원님의 몸 상태를 정밀하게 분석하고, 가장 효율적인 운동 처방을 내려드립니다.</p>
+            `;
+                mainText.style.opacity = 1;
+            }, 300);
+        });
+    });
+
 });
