@@ -118,6 +118,58 @@ body {
     width: 100%;
 }
 
+/* ==========================================================================
+   드롭다운 메뉴 (지점안내 하위 메뉴) 설정
+   ========================================================================== */
+/* 드롭다운 부모 요소 기준점 설정 */
+.nav-menu li {
+    position: relative;
+}
+
+/* 하위 드롭다운 메뉴 (배경 흰색, 테두리 없음) */
+.dropdown-menu {
+    position: absolute;
+    top: 150%;
+    left: 50%;
+    transform: translate(-50%, 15px); /* 스무스하게 내려오는 애니메이션 시작점 */
+    background-color: #ffffff;
+    border: none;
+    list-style: none;
+    min-width: 120px;
+    padding: 18px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* 배경과 겹칠 때 구분을 위한 은은한 그림자 */
+    z-index: 100;
+}
+
+/* 마우스 올렸을 때 드롭다운 표시 (간격 맞게 하강) */
+.has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+
+/* 드롭다운 내부 리스트 정렬 */
+.dropdown-menu li {
+    width: 100%;
+    text-align: center;
+}
+
+/* 드롭다운 텍스트 (밑줄 퍼지는 효과는 기존 .nav-menu a::after를 자동 상속받습니다) */
+.dropdown-menu a {
+    display: inline-block; /* 텍스트 길이만큼만 좌우 밑줄이 딱 맞게 퍼지도록 설정 */
+    padding: 5px 0;
+    font-size: 14px;
+}
+
+
 .hamburger {
     display: none;
     cursor: pointer;
@@ -613,7 +665,10 @@ body {
     height: 100%;
     border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(59, 89, 65, 0.08);
+    /* 💡 기존보다 그림자를 더 어둡고 넓게 퍼지도록 수정하여 박스가 배경에서 확실히 분리되게 함 */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 20px rgba(0, 0, 0, 0.05);
+    /* 💡 뽀얀 배경 속에서도 윤곽을 잡기 위해 아주 미세한 회색 테두리 추가 */
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .why-image-box img {
@@ -759,28 +814,34 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    /* 💡 버튼 테두리를 기존 흰색에서 살짝 어두운 톤으로 변경하여 밝은 배경 위에서도 테두리가 보이게 함 */
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    cursor: pointer; /* 👆 손가락 모양 */
+    cursor: pointer;
     display: flex;
+
     justify-content: center;
     align-items: center;
     z-index: 10;
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+    /* 💡 버튼 주변으로 퍼지는 그림자를 더 진하고 넓게 적용 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 .why-arrow:hover {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.6); /* 마우스 호버 시 조금 더 불투명하고 뚜렷해지도록 수정 */
     scale: 1.05;
 }
 
-.why-arrow.prev { left: -24px; } /* 박스 바깥으로 살짝 걸치게 하여 시원한 뷰 확보 */
+.why-arrow.prev { left: -24px; }
 .why-arrow.next { right: -24px; }
 
 .why-arrow svg {
@@ -791,6 +852,9 @@ body {
     stroke-width: 2.5;
     stroke-linecap: round;
     stroke-linejoin: round;
+
+    /* 💡 하얀색 화살표 기호 자체에도 진한 그림자를 추가하여 밝은 이미지 위에서도 기호가 선명하게 보이도록 함 */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 /* 하단 이동 도트 버튼 (인디케이터) */
@@ -899,7 +963,7 @@ body {
 /* 💡 배경이 크림색으로 바뀌었으므로, 흰색 카드가 더 맑고 선명하게 도드라지도록 그림자 튜닝 */
 .branch-card {
     position: relative;
-    background: #ffffff; /* 크림색 배경 위에 순백색 카드가 올라가서 엄청 깔끔해집니다 */
+    background: #E7F2EE; /* 크림색 배경 위에 순백색 카드가 올라가서 엄청 깔끔해집니다 */
     border-radius: 20px;
     min-height: 240px;
     display: flex;
@@ -1058,14 +1122,14 @@ body {
     top: 15%;
     width: 1px;
     height: 70%;
-    background-color: rgba(0, 0, 0, 0.06);
+    background-color: rgba(0, 0, 0, 0.15);
 }
 
 /* 동그란 아이콘 백그라운드 프레임 */
 .card-icon-box {
     width: 64px;
     height: 64px;
-    background: #f2f5f3; /* 맑고 옅은 회록색빛 도는 아주 연한 원 */
+    background: #E7F2EE; /* 맑고 옅은 회록색빛 도는 아주 연한 원 */
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -1168,13 +1232,326 @@ body {
     transform: translateX(6px);
 }
 
+/* ==========================================================================
+   LOCATION PAGE (지점안내 페이지 전용 스타일)
+   ========================================================================== */
+.location-section {
+    width: 100%;
+    padding: 160px 0 100px;
+    background-color: #ffffff;
+}
+
+.location-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+/* 1. 타이틀 영역 */
+.location-title-box {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.location-title-box h2 {
+    font-size: 38px;
+    font-weight: 700;
+    color: #2c352e;
+    letter-spacing: -0.03em;
+    margin-bottom: 18px;
+}
+
+.location-title-box .branch-desc {
+    font-size: 16px;
+    color: var(--text-gray);
+    line-height: 1.7;
+    font-weight: 300;
+    word-break: keep-all;
+}
+
+/* 2. 갤러리 슬라이더 영역 */
+.gallery-wrapper {
+    max-width: 960px;
+    margin: 0 auto 90px;
+}
+
+.gallery-main {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+    background-color: var(--bg-cream);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.4s ease;
+    filter: brightness(1.05) contrast(0.95);
+}
+
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-arrow:hover {
+    background: rgba(255, 255, 255, 0.95);
+    scale: 1.05;
+}
+
+.gallery-arrow.prev { left: 24px; }
+.gallery-arrow.next { right: 24px; }
+
+.gallery-arrow svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: #3b5941;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* 하단 5개 썸네일 영역 */
+.gallery-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.gallery-thumbnails img {
+    width: calc(20% - 13px);
+    aspect-ratio: 4 / 3;
+    border-radius: 12px;
+    cursor: pointer;
+    object-fit: cover;
+    opacity: 0.4;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border: 2px solid transparent;
+}
+
+.gallery-thumbnails img:hover {
+    opacity: 0.7;
+}
+
+.gallery-thumbnails img.active {
+    opacity: 1;
+    border-color: #439d85;
+    box-shadow: 0 8px 20px rgba(67, 157, 133, 0.2);
+    transform: translateY(-3px);
+}
+
+/* 3. 오시는길 / 전화 / 시간 안내 영역 */
+.location-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 960px;
+    margin: 0 auto 80px;
+}
+
+.info-item {
+    background: #fafbf9;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(67, 157, 133, 0.08);
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    transform: translateY(-5px);
+}
+
+.info-icon {
+    width: 54px;
+    height: 54px;
+    margin: 0 auto 20px;
+    background: #E7F2EE;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: #3b5941;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.info-item h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c352e;
+    margin-bottom: 12px;
+}
+
+.info-item p {
+    font-size: 14.5px;
+    color: var(--text-gray);
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* 4. 카카오 지도 영역 */
+.location-map-box {
+    max-width: 1000px;
+    height: 480px;
+    margin: 0 auto;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+
+/* ==========================================================================
+   LOCATION PAGE: People (강사진) 영역
+   ========================================================================== */
+.location-people-section {
+    max-width: 800px; /* 사진 2개가 너무 멀어지지 않게 너비 제한 */
+    margin: 0 auto 90px;
+}
+
+.people-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.people-header h3 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c352e;
+    letter-spacing: 0.02em;
+    font-family: 'Arial', sans-serif;
+}
+
+.people-header .header-line {
+    width: 35px;
+    height: 1px;
+    background-color: #bbbbbb;
+    margin: 20px auto 0;
+}
+
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    padding: 0 20px;
+}
+
+.people-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.people-img-box {
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 3 / 4; /* 증명/프로필 사진에 가장 예쁜 황금비율 */
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #E7F2EE; /* 사진이 로딩되기 전 깔끔한 크림색 배경 */
+    margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(67, 157, 133, 0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.people-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 마우스 올렸을 때 살짝 위로 떠오르는 효과 */
+.people-card:hover .people-img-box {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* 사진 클릭이 가능하도록 a 태그 기본 성질 보정 */
+a.people-img-box {
+    display: block;
+    cursor: pointer;
+}
+
+/* 텍스트 박스 간격 정렬 */
+.people-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* 이름과 태그 사이의 간격 */
+}
+
+.people-name {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c352e;
+    letter-spacing: -0.02em;
+    transition: color 0.3s ease;
+}
+
+/* 💡 너무 썰렁하지 않게 연두색 파스텔 태그 디자인 적용 */
+.people-role {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #439d85; /* 브랜드 에메랄드 녹색 */
+    background-color: rgba(67, 157, 133, 0.08); /* 아주 연한 녹색 파스텔 배경 */
+    padding: 6px 16px;
+    border-radius: 20px;
+    letter-spacing: 0.03em;
+}
+
+/* 💡 마우스 호버(올렸을 때) 텍스트와 태그도 함께 반응하는 디테일 */
+.people-card:hover .people-name {
+    color: #3b5941;
+}
+
+.people-card:hover .people-role {
+    background-color: rgba(67, 157, 133, 0.15);
+}
+
+
 
 /* ==========================================================================
    08. SITE FOOTER (하단 정보 영역 - 중앙 정렬 감성 스타일)
    ========================================================================== */
 .site-footer {
     width: 100%;
-    background-color: #fafbf9; /* 사이트의 따뜻한 감성 크림색 배경 사용 */
+    background-color: #E7F2EE; /* 사이트의 따뜻한 감성 크림색 배경 사용 */
     padding: 60px 0 40px 0;
     border-top: 1px solid rgba(67, 157, 133, 0.12); /* 은은한 옅은 녹색 경계선 */
 }
@@ -1261,8 +1638,6 @@ body {
     letter-spacing: 0.02em;
     font-family: 'Arial', sans-serif;
 }
-
-
 
 /* ==========================================================================
    07. RESPONSIVE MEDIA QUERIES (반응형 레이아웃 분기점)
@@ -1375,6 +1750,26 @@ body {
     }
     .nav-menu a::after {
         display: none;
+    }
+
+    .dropdown-menu {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+        background: #fafbf9; /* 모바일에서 뎁스 구분을 위해 살짝 크림색 적용 */
+        border-radius: 0;
+        display: none;
+    }
+    .has-dropdown:hover .dropdown-menu {
+        display: flex;
+        transform: none;
+    }
+    .dropdown-menu a {
+        padding: 12px 0;
+        font-size: 15px;
     }
 
     .main-slider-section {
@@ -1501,6 +1896,22 @@ body {
     .rehab-preview-container { padding: 0 24px; }
     .rehab-preview-header h2 { font-size: 28px; }
     .btn-preview-contact { width: 100%; padding: 18px 24px; font-size: 15px; }
+
+    .location-section { padding: 120px 0 80px; }
+    .location-container { padding: 0 24px; }
+    .location-title-box h2 { font-size: 28px; }
+    .location-title-box .branch-desc { font-size: 14px; }
+
+    .gallery-arrow { width: 40px; height: 40px; }
+    .gallery-arrow.prev { left: 10px; }
+    .gallery-arrow.next { right: 10px; }
+    .gallery-thumbnails { gap: 8px; }
+    .gallery-thumbnails img { width: calc(20% - 6.4px); border-radius: 8px; }
+
+    .location-info-grid { grid-template-columns: 1fr; gap: 16px; }
+    .info-item { padding: 30px 20px; }
+
+    .location-map-box { height: 320px; }
 
 
     .site-footer {

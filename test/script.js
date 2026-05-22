@@ -7,20 +7,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const navContainer = document.querySelector('.nav-container');
     const navLinks = document.querySelectorAll('.nav-menu a');
 
-    hamburger.addEventListener('click', () => {
-        const isOpen = hamburger.classList.toggle('active');
-        navContainer.classList.toggle('active');
-        hamburger.setAttribute('aria-expanded', isOpen);
-    });
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navContainer.classList.remove('active');
-            hamburger.setAttribute('aria-expanded', 'false');
+    if (hamburger && navContainer) {
+        hamburger.addEventListener('click', () => {
+            const isOpen = hamburger.classList.toggle('active');
+            navContainer.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
         });
-    });
 
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navContainer.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
 
     // ==========================================
     // 2. 프리미엄 페이드(Fade) 무한 루프 슬라이더
@@ -29,69 +30,73 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.querySelector('.slider-arrow.prev');
     const nextBtn = document.querySelector('.slider-arrow.next');
 
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-    let slideInterval;
-    const intervalTime = 4500;
+    if (slides.length > 0 && prevBtn && nextBtn) {
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+        let slideInterval;
+        const intervalTime = 4500;
 
-    function updateSliderPosition() {
-        slides.forEach((slide, index) => {
-            if (index === currentIndex) {
-                slide.classList.add('active');
-            } else {
-                slide.classList.remove('active');
-            }
+        function updateSliderPosition() {
+            slides.forEach((slide, index) => {
+                if (index === currentIndex) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSliderPosition();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSliderPosition();
+        }
+
+        function startSlideShow() {
+            slideInterval = setInterval(nextSlide, intervalTime);
+        }
+
+        function resetSlideShow() {
+            clearInterval(slideInterval);
+            startSlideShow();
+        }
+
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetSlideShow();
         });
-    }
 
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateSliderPosition();
-    }
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetSlideShow();
+        });
 
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateSliderPosition();
-    }
-
-    function startSlideShow() {
-        slideInterval = setInterval(nextSlide, intervalTime);
-    }
-
-    function resetSlideShow() {
-        clearInterval(slideInterval);
         startSlideShow();
     }
-
-    nextBtn.addEventListener('click', () => {
-        nextSlide();
-        resetSlideShow();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        prevSlide();
-        resetSlideShow();
-    });
-
-    startSlideShow();
 
     // ==========================================
     // 3. 헤더 스크롤 이벤트 (Sticky 축소 효과)
     // ==========================================
     const header = document.querySelector('.site-header');
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 
     // ==========================================
-    // 4. 스크롤 페이드인 & 업 애니메이션 (IntersectionObserver)
+    // 4. 스크롤 페이드인 & 업 애니메이션
     // ==========================================
-    const fadeElements = document.querySelectorAll('.intro-section, .program-section, .why-section, .rounded-image-wrapper, .program-card');
+    const fadeElements = document.querySelectorAll('.intro-section, .program-section, .why-section, .rounded-image-wrapper, .program-card, .location-title-box, .location-info-grid, .location-map-box, .location-people-section');
 
     const fadeOptions = {
         root: null,
@@ -99,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: "0px 0px -80px 0px"
     };
 
-    // 💡 에러 원인이었던 띄어쓰기(IntersectionObserver)를 완벽히 붙여서 수정했습니다!
     const fadeObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -113,7 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
         element.classList.add('fade-init');
         fadeObserver.observe(element);
     });
-// ==========================================
+
+    // ==========================================
     // 5. WHY SECTION 자율 무한 루프 및 화살표 수동 제어 슬라이더
     // ==========================================
     const whySlides = document.querySelectorAll('.why-slide');
@@ -121,61 +126,128 @@ document.addEventListener('DOMContentLoaded', () => {
     const whyPrevBtn = document.querySelector('.why-arrow.prev');
     const whyNextBtn = document.querySelector('.why-arrow.next');
 
-    let whyIndex = 0;
-    const totalWhySlides = whySlides.length;
-    const whyIntervalTime = 4000; // 4초 주기 자동 슬라이딩
-    let whySliderTimer;
+    if (whySlides.length > 0 && whyPrevBtn && whyNextBtn) {
+        let whyIndex = 0;
+        const totalWhySlides = whySlides.length;
+        const whyIntervalTime = 4000;
+        let whySliderTimer;
 
-    function switchWhySlide(nextIndex) {
-        // 기존 활성화 클래스 제거
-        whySlides[whyIndex].classList.remove('active');
-        whyDots[whyIndex].classList.remove('active');
+        function switchWhySlide(nextIndex) {
+            whySlides[whyIndex].classList.remove('active');
+            whyDots[whyIndex].classList.remove('active');
 
-        // 새로운 타겟 인덱스 클래스 부여
-        whyIndex = nextIndex;
-        whySlides[whyIndex].classList.add('active');
-        whyDots[whyIndex].classList.add('active');
-    }
+            whyIndex = nextIndex;
+            whySlides[whyIndex].classList.add('active');
+            whyDots[whyIndex].classList.add('active');
+        }
 
-    function nextWhySlide() {
-        const nextIdx = (whyIndex + 1) % totalWhySlides;
-        switchWhySlide(nextIdx);
-    }
+        function nextWhySlide() {
+            const nextIdx = (whyIndex + 1) % totalWhySlides;
+            switchWhySlide(nextIdx);
+        }
 
-    function prevWhySlide() {
-        const prevIdx = (whyIndex - 1 + totalWhySlides) % totalWhySlides;
-        switchWhySlide(prevIdx);
-    }
+        function prevWhySlide() {
+            const prevIdx = (whyIndex - 1 + totalWhySlides) % totalWhySlides;
+            switchWhySlide(prevIdx);
+        }
 
-    function startWhyTimer() {
-        whySliderTimer = setInterval(nextWhySlide, whyIntervalTime);
-    }
+        function startWhyTimer() {
+            whySliderTimer = setInterval(nextWhySlide, whyIntervalTime);
+        }
 
-    function resetWhyTimer() {
-        clearInterval(whySliderTimer);
+        function resetWhyTimer() {
+            clearInterval(whySliderTimer);
+            startWhyTimer();
+        }
+
+        whyNextBtn.addEventListener('click', () => {
+            nextWhySlide();
+            resetWhyTimer();
+        });
+
+        whyPrevBtn.addEventListener('click', () => {
+            prevWhySlide();
+            resetWhyTimer();
+        });
+
+        whyDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                switchWhySlide(index);
+                resetWhyTimer();
+            });
+        });
+
         startWhyTimer();
     }
 
-    // 다음 화살표 클릭 핸들러
-    whyNextBtn.addEventListener('click', () => {
-        nextWhySlide();
-        resetWhyTimer();
-    });
+    // 6. LOCATION PAGE: 지점안내 갤러리 슬라이더 (자동 재생 추가)
+    const mainGalleryImg = document.getElementById('main-gallery-img');
+    const thumbnails = document.querySelectorAll('.thumb-img');
+    const galleryPrevBtn = document.querySelector('.gallery-arrow.prev');
+    const galleryNextBtn = document.querySelector('.gallery-arrow.next');
+    const galleryWrapper = document.querySelector('.gallery-wrapper'); // 마우스 감지용
 
-    // 이전 화살표 클릭 핸들러
-    whyPrevBtn.addEventListener('click', () => {
-        prevWhySlide();
-        resetWhyTimer();
-    });
+    if (mainGalleryImg && thumbnails.length > 0 && galleryPrevBtn && galleryNextBtn) {
+        let currentGalleryIndex = 0;
+        let galleryInterval;
+        const autoPlayTime = 3000; // 4초마다 자동 전환
 
-    // 도트(인디케이터) 직접 클릭 핸들러
-    whyDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            switchWhySlide(index);
-            resetWhyTimer();
+        function updateGallery(newIndex) {
+            mainGalleryImg.style.opacity = '0.7';
+
+            setTimeout(() => {
+                currentGalleryIndex = newIndex;
+                mainGalleryImg.src = thumbnails[currentGalleryIndex].src;
+                mainGalleryImg.style.opacity = '1';
+
+                thumbnails.forEach((thumb, idx) => {
+                    thumb.classList.toggle('active', idx === currentGalleryIndex);
+                });
+            }, 150);
+        }
+
+        // 자동 재생 함수
+        function startGalleryAutoPlay() {
+            galleryInterval = setInterval(() => {
+                let nextIdx = (currentGalleryIndex + 1) % thumbnails.length;
+                updateGallery(nextIdx);
+            }, autoPlayTime);
+        }
+
+        function stopGalleryAutoPlay() {
+            clearInterval(galleryInterval);
+        }
+
+        // 썸네일 클릭 시
+        thumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => {
+                updateGallery(index);
+                stopGalleryAutoPlay(); // 클릭 시 자동 재생 멈춤
+                startGalleryAutoPlay(); // 다시 시작
+            });
         });
-    });
 
-    // 슬라이더 구동 초기화 시작
-    startWhyTimer();
+        // 화살표 클릭 시
+        galleryNextBtn.addEventListener('click', () => {
+            updateGallery((currentGalleryIndex + 1) % thumbnails.length);
+            stopGalleryAutoPlay();
+            startGalleryAutoPlay();
+        });
+
+        galleryPrevBtn.addEventListener('click', () => {
+            updateGallery((currentGalleryIndex - 1 + thumbnails.length) % thumbnails.length);
+            stopGalleryAutoPlay();
+            startGalleryAutoPlay();
+        });
+
+        // 마우스 올리면 멈춤, 나가면 다시 재생 (사용자 편의)
+        if (galleryWrapper) {
+            galleryWrapper.addEventListener('mouseenter', stopGalleryAutoPlay);
+            galleryWrapper.addEventListener('mouseleave', startGalleryAutoPlay);
+        }
+
+        // 초기 실행
+        startGalleryAutoPlay();
+    }
+
 });
