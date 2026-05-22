@@ -1544,7 +1544,7 @@ a.people-img-box {
     background-color: rgba(67, 157, 133, 0.15);
 }
 
-/* --- Teachers Page 전용 스타일 (기존 코드에 영향 없음) --- */
+/* --- Teachers Page 전용 스타일 (이미지 높이 확대 및 비율 최적화) --- */
 .teachers-page { padding: 120px 20px 80px; }
 
 .teachers-header { text-align: center; margin-bottom: 80px; }
@@ -1552,28 +1552,58 @@ a.people-img-box {
 .teachers-header p { font-size: 16px; color: #606a61; }
 
 .teachers-detail .detail-wrapper {
-    display: flex; align-items: flex-start; /* 1. 텍스트 위로 정렬 */
-    gap: 80px; max-width: 1000px; margin: 0 auto; padding: 0 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 80px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px;
 }
 .teachers-detail .detail-img {
-    width: 500px !important; height: 600px !important; border-radius: 20px; overflow: hidden; flex-shrink: 0;
+    width: 45%; /* 이력 텍스트 공간 확보를 위해 가로 비율을 살짝 조정 */
+    aspect-ratio: 3 / 4; /* 💡 1:1에서 3:4 세로형 비율로 변경하여 높이를 시원하게 높임 */
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 .teachers-detail .detail-img img {
-    width: 100%; height: 100%; object-fit: cover;
-    object-position: top; /* 3. 반응형 시 머리부분 고정 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top; /* 인물 사진 머리 부분이 잘리지 않도록 상단 고정 */
 }
-.teachers-detail .detail-text h3 {
-    font-size: 24px; margin-bottom: 20px; color: #2c352e; /* 2. 이름 크기 작게 */
+.teachers-detail .detail-text {
+    width: 55%; /* 텍스트 공간 확보 */
+}
+.teachers-detail .detail-text h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #2c352e;
+    font-weight: 700;
 }
 .teachers-detail .detail-text p {
-    font-size: 16px; margin-bottom: 15px; line-height: 1.8; color: #606a61;
+    font-size: 16px;
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: #606a61;
 }
 
 .teachers-gallery { max-width: 1000px; margin: 100px auto 0; }
-.gallery-wrapper { display: flex; justify-content: center; gap: 40px; }
+.gallery-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
 .gallery-item { text-align: center; cursor: pointer; }
 .round-img {
-    width: 220px; height: 220px; border-radius: 50%; overflow: hidden; margin-bottom: 20px; border: 5px solid #e7f2ee;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 5px solid #e7f2ee;
     transition: 0.3s;
 }
 .round-img:hover { transform: scale(1.05); border-color: #a8d5ba; }
@@ -1968,9 +1998,15 @@ a.people-img-box {
     }
 }
 
+/* --- 태블릿 및 모바일 반응형 수치 정밀화 --- */
 @media (max-width: 900px) {
-    .teachers-detail .detail-wrapper { flex-direction: column; }
-    .teachers-detail .detail-img { width: 100% !important; height: 500px !important; } /* 3. 모바일 높이 충분히 유지 */
+    .teachers-detail .detail-wrapper { flex-direction: column; gap: 40px; }
+    /* 모바일 환경에서는 세로로 배치되므로 너무 길어지지 않게 화면에 맞춰 조정 */
+    .teachers-detail .detail-img { width: 100%; max-width: 450px; margin: 0 auto; aspect-ratio: 1 / 1; }
+    .teachers-detail .detail-text { width: 100%; }
+
+    .teachers-gallery .round-img { width: 160px; height: 160px; }
+    .gallery-wrapper { gap: 20px; }
 }
 
 @media (max-width: 600px) {

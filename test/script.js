@@ -250,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
         startGalleryAutoPlay();
     }
 
+// 7. TEACHERS PAGE: 강사 클릭 교체 로직
     const galleryItems = document.querySelectorAll('.gallery-item');
     const mainImg = document.querySelector('#main-img img');
     const mainText = document.querySelector('#main-text');
@@ -260,11 +261,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             mainText.style.opacity = 0;
             setTimeout(() => {
-                // 이름과 내용 영역 분리
-                document.querySelector('#instructor-name').innerText = `${item.getAttribute('data-name')} 강사`;
+                // 이름 뒤에 강제로 '강사'가 붙지 않도록 수정, 줄바꿈 태그(<br>) 그대로 반영
+                document.querySelector('#instructor-name').innerText = item.getAttribute('data-name');
                 document.querySelector('#instructor-desc').innerHTML = `
-                <p>${item.getAttribute('data-desc')}</p>
-                <p>더맞춤의 재활 철학을 바탕으로 회원님의 몸 상태를 정밀하게 분석하고, 가장 효율적인 운동 처방을 내려드립니다.</p>
+                <p style="line-height: 1.8;">${item.getAttribute('data-desc')}</p>
             `;
                 mainText.style.opacity = 1;
             }, 300);
