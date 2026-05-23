@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
         startGalleryAutoPlay();
     }
 
-// 7. TEACHERS PAGE: 강사 클릭 교체 로직
+    // 7. TEACHERS PAGE: 강사 클릭 교체 로직
     const galleryItems = document.querySelectorAll('.gallery-item');
     const mainImg = document.querySelector('#main-img img');
     const mainText = document.querySelector('#main-text');
@@ -270,5 +270,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 300);
         });
     });
+
+    // ==========================================
+    // 8. 신규 추가: PROGRAM PAGE 프리미엄 퀵 스무스 스크롤 네비게이션
+    // ==========================================
+    const scrollButtons = document.querySelectorAll('.scroll-anchor-btn');
+
+    scrollButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetId = btn.getAttribute('data-scroll');
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                // 상단 고정 헤더 높이(약 80px)와 미적인 여백을 고려해 -100px 좌표 연산 보정
+                const targetY = targetElement.getBoundingClientRect().top + window.scrollY - 100;
+
+                window.scrollTo({
+                    top: targetY,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
 
 });

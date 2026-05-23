@@ -114,6 +114,7 @@ body {
     /* 🧼 뿌옇게 번지던 번인 이펙트(box-shadow)를 완전히 제거했습니다! */
     box-shadow: none;
 }
+
 .nav-menu a:hover::after {
     width: 100%;
 }
@@ -227,10 +228,21 @@ body {
 }
 
 /* 슬라이더 배경 리소스 매핑 */
-.slide-1 { background: url('img/main/main1.png') center /cover no-repeat; }
-.slide-2 { background: url('img/main/main2.png') center 20%/cover no-repeat; }
-.slide-3 { background: url('img/main/main3.png') center /cover no-repeat; }
-.slide-4 { background: url('img/main/main4.png') center /cover no-repeat; }
+.slide-1 {
+    background: url('img/main/main1.png') center /cover no-repeat;
+}
+
+.slide-2 {
+    background: url('img/main/main2.png') center 20%/cover no-repeat;
+}
+
+.slide-3 {
+    background: url('img/main/main3.png') center /cover no-repeat;
+}
+
+.slide-4 {
+    background: url('img/main/main4.png') center /cover no-repeat;
+}
 
 /* 🧼 기존의 어두운 검정색 마스크 오버레이 막을 완전히 제거하여 사진을 환하게 살립니다 */
 .slide::before {
@@ -269,10 +281,7 @@ body {
     object-fit: contain;
 
     /* 💡 그림자 두께를 키우고 퍼짐(Blur) 값을 넓힌 다중 레이어 시스템 */
-    filter: brightness(0) invert(1)
-    drop-shadow(0 3px 6px rgba(0, 0, 0, 0.25))    /* 선명한 외곽선 보정 */
-    drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3))    /* 중간 범위 음영 추가 */
-    drop-shadow(0 20px 50px rgba(0, 0, 0, 0.25)); /* 넓고 은은하게 퍼지는 그림자 */
+    filter: brightness(0) invert(1) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.25)) /* 선명한 외곽선 보정 */ drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3)) /* 중간 범위 음영 추가 */ drop-shadow(0 20px 50px rgba(0, 0, 0, 0.25)); /* 넓고 은은하게 퍼지는 그림자 */
 }
 
 /* 슬라이더 수동 컨트롤 화살표 */
@@ -301,8 +310,13 @@ body {
     transform: translateY(-50%) scale(1.05);
 }
 
-.slider-arrow.prev { left: 40px; }
-.slider-arrow.next { right: 40px; }
+.slider-arrow.prev {
+    left: 40px;
+}
+
+.slider-arrow.next {
+    right: 40px;
+}
 
 .slider-arrow svg {
     width: 22px;
@@ -313,7 +327,7 @@ body {
     stroke-linecap: round;
     stroke-linejoin: round;
     /* 화살표 아이콘 뒤에도 미세한 섀도우를 주어 시인성을 높입니다 */
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
 }
 
 
@@ -527,7 +541,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(67, 157, 133, 0.02) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(67, 157, 133, 0.02) 100%);
     pointer-events: none;
     z-index: 2;
 }
@@ -737,48 +751,46 @@ body {
 }
 
 .why-text-content h3 {
-    font-size: 32px;            /* 📐 기존 26px에서 32px로 대폭 키워 시선 집중 */
+    font-size: 32px; /* 📐 기존 26px에서 32px로 대폭 키워 시선 집중 */
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 16px;        /* 글씨가 커진 만큼 본문과의 간격도 살짝 조정 */
+    margin-bottom: 16px; /* 글씨가 커진 만큼 본문과의 간격도 살짝 조정 */
     letter-spacing: -0.03em;
     line-height: 1.3;
 
     /* 💡 아주 밝은 빛 위에서도 글자 외곽선이 깨지지 않도록 진하고 넓게 퍼지는 4중 그림자 */
-    text-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.45),
-        0 4px 12px rgba(0, 0, 0, 0.4),
-        0 12px 28px rgba(0, 0, 0, 0.3),
-        0 25px 60px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45),
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    0 12px 28px rgba(0, 0, 0, 0.3),
+    0 25px 60px rgba(0, 0, 0, 0.2);
 }
 
 /* 2. 본문 설명 (중간 글씨) 수정 */
 .why-text-content p {
-    font-size: 16px;            /* 📐 기존 14px에서 16px로 키워 가독성 완벽 확보 */
-    color: #ffffff;             /* 투명도 없는 순수 흰색으로 고정 */
-    line-height: 1.7;           /* 줄간격을 넓혀 시원하게 읽히도록 배치 */
+    font-size: 16px; /* 📐 기존 14px에서 16px로 키워 가독성 완벽 확보 */
+    color: #ffffff; /* 투명도 없는 순수 흰색으로 고정 */
+    line-height: 1.7; /* 줄간격을 넓혀 시원하게 읽히도록 배치 */
     font-weight: 400;
     margin-bottom: 28px;
     word-break: keep-all;
 
     /* 💡 작은 글씨들이 뭉개지지 않고 스며들듯 또렷해지는 3중 미세 그림자 */
-    text-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.5),
-        0 6px 15px rgba(0, 0, 0, 0.45),
-        0 15px 35px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 6px 15px rgba(0, 0, 0, 0.45),
+    0 15px 35px rgba(0, 0, 0, 0.25);
 }
 
 /* 이미지 내부 흰색 감성 버튼 */
 /* 1. 자세히 보기 버튼 전체 크기 및 두께 키우기 */
 .btn-detail {
-    font-size: 16px;       /* font-size를 기존 13px에서 16px로 시원하게 확대 */
-    font-weight: 700;      /* 글씨 두께를 조금 더 두껍고 명확하게 변경 */
+    font-size: 16px; /* font-size를 기존 13px에서 16px로 시원하게 확대 */
+    font-weight: 700; /* 글씨 두께를 조금 더 두껍고 명확하게 변경 */
     color: #ffffff;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 8px;              /* 글씨와 화살표 아이콘 사이 간격 확대 */
-    padding: 8px 0;        /* 클릭 영역 확보를 위해 위아래 여백 추가 */
+    gap: 8px; /* 글씨와 화살표 아이콘 사이 간격 확대 */
+    padding: 8px 0; /* 클릭 영역 확보를 위해 위아래 여백 추가 */
     border-bottom: 2px solid rgba(255, 255, 255, 0.6); /* 밑줄 두께를 1px에서 2px로 두껍게 변경 */
     transition: all 0.3s ease;
 
@@ -788,7 +800,7 @@ body {
 
 /* 2. 버튼이 커짐에 따라 내부에 있는 화살표 아이콘 크기 맞추기 */
 .btn-detail svg {
-    width: 16px;           /* 아이콘 크기도 기존 14px에서 16px로 글씨와 정렬 일치 */
+    width: 16px; /* 아이콘 크기도 기존 14px에서 16px로 글씨와 정렬 일치 */
     height: 16px;
     stroke: #ffffff;
     stroke-width: 2.5;
@@ -796,7 +808,7 @@ body {
     transition: transform 0.3s ease;
 
     /* 아이콘 시인성 보정용 그림자 */
-    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
 }
 
 /* 마우스 올렸을 때(Hover) 스타일 디테일 */
@@ -841,8 +853,13 @@ body {
     scale: 1.05;
 }
 
-.why-arrow.prev { left: -24px; }
-.why-arrow.next { right: -24px; }
+.why-arrow.prev {
+    left: -24px;
+}
+
+.why-arrow.next {
+    right: -24px;
+}
 
 .why-arrow svg {
     width: 20px;
@@ -887,6 +904,7 @@ body {
     transition: opacity 1.2s cubic-bezier(0.215, 0.610, 0.355, 1),
     transform 1.2s cubic-bezier(0.215, 0.610, 0.355, 1);
 }
+
 .why-section.is-visible {
     opacity: 1;
     transform: translateY(0);
@@ -974,10 +992,9 @@ body {
 
     /* 얇은 에메랄드 테두리와 부드러운 대형 그림자로 프리미엄 무드 강조 */
     border: 1px solid rgba(67, 157, 133, 0.12);
-    box-shadow:
-        0 4px 6px -1px rgba(0, 0, 0, 0.01),
-        0 10px 30px -5px rgba(59, 89, 65, 0.05),
-        0 30px 60px -10px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01),
+    0 10px 30px -5px rgba(59, 89, 65, 0.05),
+    0 30px 60px -10px rgba(0, 0, 0, 0.02);
 
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
@@ -1009,9 +1026,8 @@ body {
 .branch-card:hover {
     transform: translateY(-8px);
     border-color: rgba(80, 184, 156, 0.4);
-    box-shadow:
-        0 20px 40px -5px rgba(80, 184, 156, 0.12),
-        0 30px 60px -15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 20px 40px -5px rgba(80, 184, 156, 0.12),
+    0 30px 60px -15px rgba(0, 0, 0, 0.05);
 }
 
 .branch-card:hover .branch-title {
@@ -1048,10 +1064,21 @@ body {
     transition-delay: 0.25s;
 }
 
-.program-grid .program-card:nth-child(1) { transition-delay: 0.1s; }
-.program-grid .program-card:nth-child(2) { transition-delay: 0.25s; }
-.program-grid .program-card:nth-child(3) { transition-delay: 0.4s; }
-.program-grid .program-card:nth-child(4) { transition-delay: 0.55s; }
+.program-grid .program-card:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.program-grid .program-card:nth-child(2) {
+    transition-delay: 0.25s;
+}
+
+.program-grid .program-card:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.program-grid .program-card:nth-child(4) {
+    transition-delay: 0.55s;
+}
 
 
 /* ==========================================================================
@@ -1197,14 +1224,14 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;                     /* 아이콘과의 간격 슬림화 */
-    background-color: #3b5941;    /* 시그니처 딥그린 */
+    gap: 8px; /* 아이콘과의 간격 슬림화 */
+    background-color: #3b5941; /* 시그니처 딥그린 */
     color: #ffffff;
     text-decoration: none;
-    padding: 14px 36px;           /* ↕️ 위아래/좌우 두께를 대폭 줄여 슬림하고 예쁘게 변경 */
-    border-radius: 30px;          /* 알약 형태는 유지하되 높이에 맞게 조절 */
-    font-size: 15px;              /* 📐 너무 부담스럽지 않은 콤팩트한 글씨 크기 */
-    font-weight: 500;              /* 굵기를 700에서 500으로 낮춰 더 정갈하고 가볍게 */
+    padding: 14px 36px; /* ↕️ 위아래/좌우 두께를 대폭 줄여 슬림하고 예쁘게 변경 */
+    border-radius: 30px; /* 알약 형태는 유지하되 높이에 맞게 조절 */
+    font-size: 15px; /* 📐 너무 부담스럽지 않은 콤팩트한 글씨 크기 */
+    font-weight: 500; /* 굵기를 700에서 500으로 낮춰 더 정갈하고 가볍게 */
     letter-spacing: -0.02em;
     box-shadow: 0 4px 15px rgba(59, 89, 65, 0.1); /* 그림자도 은은하게 축소 */
     cursor: pointer;
@@ -1213,7 +1240,7 @@ body {
 
 /* 버튼 내부 화살표 아이콘 크기 동시 보정 */
 .btn-preview-contact svg {
-    width: 16px;                  /* 아이콘 크기도 20px에서 16px로 축소 */
+    width: 16px; /* 아이콘 크기도 20px에서 16px로 축소 */
     height: 16px;
     fill: none;
     stroke: #ffffff;
@@ -1225,7 +1252,7 @@ body {
 .btn-preview-contact:hover {
     background-color: #439d85;
     box-shadow: 0 8px 20px rgba(67, 157, 133, 0.2);
-    transform: translateY(-1px);  /* 커지는 효과(scale) 대신 위로 1px만 살짝 들리게 변경 */
+    transform: translateY(-1px); /* 커지는 효과(scale) 대신 위로 1px만 살짝 들리게 변경 */
 }
 
 .btn-preview-contact:hover svg {
@@ -1320,8 +1347,13 @@ body {
     scale: 1.05;
 }
 
-.gallery-arrow.prev { left: 24px; }
-.gallery-arrow.next { right: 24px; }
+.gallery-arrow.prev {
+    left: 24px;
+}
+
+.gallery-arrow.next {
+    right: 24px;
+}
 
 .gallery-arrow svg {
     width: 22px;
@@ -1545,11 +1577,26 @@ a.people-img-box {
 }
 
 /* --- Teachers Page 전용 스타일 (이미지 높이 확대 및 비율 최적화) --- */
-.teachers-page { padding: 120px 20px 80px; }
+.teachers-page {
+    padding: 120px 20px 80px;
+}
 
-.teachers-header { text-align: center; margin-bottom: 80px; }
-.teachers-header h1 { font-size: 42px; font-weight: 700; margin-bottom: 20px; color: #3b5941; }
-.teachers-header p { font-size: 16px; color: #606a61; }
+.teachers-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.teachers-header h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #3b5941;
+}
+
+.teachers-header p {
+    font-size: 16px;
+    color: #606a61;
+}
 
 .teachers-detail .detail-wrapper {
     display: flex;
@@ -1559,6 +1606,7 @@ a.people-img-box {
     margin: 0 auto;
     padding: 0 40px;
 }
+
 .teachers-detail .detail-img {
     width: 45%; /* 이력 텍스트 공간 확보를 위해 가로 비율을 살짝 조정 */
     aspect-ratio: 3 / 4; /* 💡 1:1에서 3:4 세로형 비율로 변경하여 높이를 시원하게 높임 */
@@ -1567,21 +1615,25 @@ a.people-img-box {
     flex-shrink: 0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
+
 .teachers-detail .detail-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top; /* 인물 사진 머리 부분이 잘리지 않도록 상단 고정 */
 }
+
 .teachers-detail .detail-text {
     width: 55%; /* 텍스트 공간 확보 */
 }
+
 .teachers-detail .detail-text h2 {
     font-size: 28px;
     margin-bottom: 30px;
     color: #2c352e;
     font-weight: 700;
 }
+
 .teachers-detail .detail-text p {
     font-size: 16px;
     margin-bottom: 15px;
@@ -1589,14 +1641,23 @@ a.people-img-box {
     color: #606a61;
 }
 
-.teachers-gallery { max-width: 1000px; margin: 100px auto 0; }
+.teachers-gallery {
+    max-width: 1000px;
+    margin: 100px auto 0;
+}
+
 .gallery-wrapper {
     display: flex;
     justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
 }
-.gallery-item { text-align: center; cursor: pointer; }
+
+.gallery-item {
+    text-align: center;
+    cursor: pointer;
+}
+
 .round-img {
     width: 220px;
     height: 220px;
@@ -1606,8 +1667,313 @@ a.people-img-box {
     border: 5px solid #e7f2ee;
     transition: 0.3s;
 }
-.round-img:hover { transform: scale(1.05); border-color: #a8d5ba; }
-.round-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.round-img:hover {
+    transform: scale(1.05);
+    border-color: #a8d5ba;
+}
+
+.round-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top; /* 핵심 속성! 이미지를 위쪽으로 정렬 */
+}
+
+/* ==========================================================================
+   PROGRAM.HTML 전용 (서브페이지 연속 스크롤 스트리밍 및 프리미엄 교차 레이아웃)
+   ========================================================================== */
+.subpage-header {
+    width: 100%;
+    padding: 160px 20px 60px;
+    background-color: #ffffff;
+    text-align: center;
+    border-bottom: 1px solid rgba(67, 157, 133, 0.08);
+}
+
+.subpage-header h2 {
+    font-size: 38px;
+    font-weight: 700;
+    color: #2c352e;
+    letter-spacing: -0.02em;
+    margin-bottom: 15px;
+}
+
+.subpage-header p {
+    font-size: 16px;
+    color: var(--text-gray);
+}
+
+.program-overview-section {
+    padding: 100px 0;
+    background-color: var(--bg-cream); /* 상단 요약은 부드러운 크림/연두톤 배경 시작 */
+    border-bottom: 1px solid rgba(67, 157, 133, 0.05);
+}
+
+/* 퀵 스무스 링크용 커서 손모양 세팅 */
+.program-card.scroll-anchor-btn {
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.program-card.scroll-anchor-btn:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(67, 157, 133, 0.15);
+}
+
+/* 스크롤 스트리밍 개별 큰 블록 */
+.program-detail-block {
+    width: 100%;
+    padding: 120px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+/* 🎨 배경색 리드미컬 교차용 클래스 시스템 */
+.program-detail-block.bg-white {
+    background-color: #ffffff;
+}
+.program-detail-block.bg-green {
+    background-color: #FAFBF9; /* 투명하고 맑은 더맞춤 고유 파스텔 연두크림 필터 배경 */
+}
+
+.detail-block-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+/* 지그재그 레이아웃 좌우 반전 처리 */
+.program-detail-block.reverse .detail-block-container {
+    flex-direction: row-reverse;
+}
+
+.detail-block-image {
+    flex: 1.1;
+    border-radius: 28px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.detail-block-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 📸 일본 특유의 아련하고 환한 아날로그 감성 필터 적용 */
+    filter: brightness(1.08) contrast(0.92) saturate(0.8) sepia(0.1);
+}
+
+.detail-block-text {
+    flex: 1;
+}
+
+.detail-block-text h3 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c352e;
+    margin: 14px 0 20px 0;
+    letter-spacing: -0.03em;
+    line-height: 1.3;
+}
+
+.detail-main-desc {
+    font-size: 17px;
+    font-weight: 500;
+    color: #3b5941;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    word-break: keep-all;
+}
+
+.detail-sub-desc {
+    font-size: 15px;
+    color: var(--text-gray);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 30px;
+    word-break: keep-all;
+}
+
+/* 풍부한 알짜배기 상세 가이드 불릿 */
+.detail-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.08);
+    padding-top: 20px;
+}
+
+.bullet-item {
+    position: relative;
+    padding-left: 24px;
+}
+
+.bullet-item::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: #439d85;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.bullet-item strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.bullet-item span {
+    display: block;
+    font-size: 14px;
+    color: var(--text-gray);
+    font-weight: 300;
+}
+
+/* WHY 섹션 대제목 여백 확보 */
+.why-detail-stream {
+    background-color: #ffffff;
+    padding-top: 100px;
+}
+.why-detail-stream .why-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* ==========================================================================
+   신규 추가: OUR MISSION BRAND PROMISE SECTION (중앙 정렬 감성 패키지)
+   ========================================================================== */
+.program-promise-section {
+    width: 100%;
+    padding: 120px 0;
+    background-color: #E7F2EE; /* 은은하고 단단한 무드의 연두 에메랄드 시그니처 배경 */
+    text-align: center;
+    border-top: 1px solid rgba(67, 157, 133, 0.1);
+}
+
+.promise-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.promise-header {
+    margin-bottom: 70px;
+}
+
+.promise-header h2 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #111111;
+    letter-spacing: -0.03em;
+}
+
+.promise-main-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #2c352e;
+    line-height: 1.6;
+    margin-top: 20px;
+    word-break: keep-all;
+}
+
+.promise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.promise-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 50px 35px;
+    box-shadow: 0 10px 30px rgba(59, 89, 65, 0.05);
+    border: 1px solid rgba(67, 157, 133, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.4s ease;
+}
+.promise-card:hover {
+    transform: translateY(-6px);
+}
+
+/* 미니멀 라인 전용 아이콘 서클 */
+.promise-icon {
+    width: 60px;
+    height: 60px;
+    background: #E7F2EE;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.promise-icon svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: #3b5941;
+    stroke-width: 1.8;
+}
+
+.promise-card h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #2c352e;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.promise-card p {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.65;
+    font-weight: 300;
+    word-break: keep-all;
+}
+
+/* 반응형 분기점 정밀화 (태블릿 및 모바일 스마트폰) */
+@media (max-width: 992px) {
+    .detail-block-container {
+        flex-direction: column !important; /* 모바일에서는 무조건 수직 일렬 배치 */
+        gap: 40px;
+        padding: 0 24px;
+    }
+    .detail-block-image {
+        width: 100%;
+        max-width: 540px;
+    }
+    .detail-block-text {
+        text-align: center;
+    }
+    .detail-block-text h3 { font-size: 26px; }
+    .bullet-item { text-align: left; }
+
+    .promise-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    .promise-card { padding: 40px 24px; }
+}
+
+@media (max-width: 768px) {
+    .subpage-header { padding: 120px 20px 40px; }
+    .subpage-header h2 { font-size: 28px; }
+    .program-detail-block { padding: 80px 0; }
+    .promise-header h2 { font-size: 26px; }
+    .promise-main-text { font-size: 15px; }
+}
+
 
 /* ==========================================================================
    08. SITE FOOTER (하단 정보 영역 - 중앙 정렬 감성 스타일)
@@ -1711,6 +2077,7 @@ a.people-img-box {
     .program-container {
         padding: 0 40px;
     }
+
     .program-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
@@ -1722,26 +2089,33 @@ a.people-img-box {
     .intro-container {
         padding: 0 30px;
     }
+
     .intro-top-header h2 {
         font-size: 30px;
     }
+
     .intro-body-content {
         gap: 40px;
     }
+
     .rounded-image-wrapper {
         height: 380px;
     }
+
     .rehab-preview-grid {
         grid-template-columns: 1fr; /* 화면 좁아지면 무너지지 않게 수직 1열 정렬 */
         gap: 50px;
         margin-bottom: 60px;
     }
+
     .rehab-clean-card {
         padding: 0 20px;
     }
+
     .rehab-clean-card:not(:last-child)::after {
         display: none; /* 세로 경계 가이드선은 모바일에서 제거 */
     }
+
     .card-icon-box {
         margin-bottom: 20px;
     }
@@ -1753,12 +2127,15 @@ a.people-img-box {
         padding: 0 24px;
         height: 70px;
     }
+
     .site-header.scrolled {
         height: 60px;
     }
+
     .logo img {
         max-height: 38px;
     }
+
     .site-header.scrolled .logo img {
         max-height: 34px;
     }
@@ -1766,12 +2143,15 @@ a.people-img-box {
     .hamburger {
         display: block;
     }
+
     .hamburger.active span:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
+
     .hamburger.active span:nth-child(2) {
         opacity: 0;
     }
+
     .hamburger.active span:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
@@ -1789,28 +2169,34 @@ a.people-img-box {
         transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         border-bottom: 0 solid rgba(228, 247, 225, 0.5);
     }
+
     .nav-container.active {
         max-height: 450px;
         border-bottom: 1px solid rgba(228, 247, 225, 0.5);
     }
+
     .nav-menu {
         flex-direction: column;
         gap: 0;
         padding: 10px 0;
     }
+
     .nav-menu li {
         width: 100%;
         text-align: center;
     }
+
     .nav-menu a {
         display: block;
         padding: 20px 0;
         font-size: 16px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.02);
     }
+
     .nav-menu li:last-child a {
         border-bottom: none;
     }
+
     .nav-menu a::after {
         display: none;
     }
@@ -1826,10 +2212,12 @@ a.people-img-box {
         border-radius: 0;
         display: none;
     }
+
     .has-dropdown:hover .dropdown-menu {
         display: flex;
         transform: none;
     }
+
     .dropdown-menu a {
         padding: 12px 0;
         font-size: 15px;
@@ -1839,56 +2227,75 @@ a.people-img-box {
         height: 55vh;
         margin-top: 70px;
     }
+
     .logo-image-wrapper {
         width: 240px;
     }
+
     .slider-arrow {
         width: 44px;
         height: 44px;
     }
-    .slider-arrow.prev { left: 16px; }
-    .slider-arrow.next { right: 16px; }
+
+    .slider-arrow.prev {
+        left: 16px;
+    }
+
+    .slider-arrow.next {
+        right: 16px;
+    }
 
     .intro-section {
         padding: 80px 0;
     }
+
     .intro-top-header {
         margin-bottom: 40px;
     }
+
     .intro-top-header h2 {
         font-size: 24px;
     }
+
     .intro-body-content {
         flex-direction: column;
         gap: 40px;
     }
+
     .intro-text-box {
         flex: 1;
         text-align: center;
     }
+
     .intro-description .highlight-p {
         font-size: 16px;
     }
+
     .intro-description p {
         font-size: 14px;
     }
+
     .intro-image-box {
         width: 100%;
         justify-content: center;
     }
+
     .rounded-image-wrapper {
         max-width: 100%;
         height: 320px;
     }
+
     .intro-signature {
         margin-top: 16px;
         padding-top: 16px;
     }
+
     .intro-signature span {
         font-size: 15px;
         margin-top: 10px;
         padding-right: 10px;
     }
+
     .pc-only {
         display: none;
     }
@@ -1896,85 +2303,175 @@ a.people-img-box {
     .program-section {
         padding: 80px 0;
     }
+
     .program-container {
         padding: 0 24px;
     }
+
     .program-grid {
         grid-template-columns: 1fr;
         max-width: 340px;
         margin: 0 auto;
         gap: 40px;
     }
+
     .program-header h2 {
         font-size: 26px;
     }
 
 
-    .why-section { padding: 80px 0; }
-    .why-container { padding: 0 24px; }
-    .why-header h2 { font-size: 26px; }
-    .why-slider { height: 400px; }
-    .why-image-overlay { padding: 30px; }
-    .why-text-content h3 { font-size: 20px; }
-    .why-text-content p { font-size: 13px; margin-bottom: 16px; }
-    .why-arrow { width: 40px; height: 40px; }
-    .why-arrow.prev { left: 10px; }
-    .why-arrow.next { right: 10px; }
+    .why-section {
+        padding: 80px 0;
+    }
+
+    .why-container {
+        padding: 0 24px;
+    }
+
+    .why-header h2 {
+        font-size: 26px;
+    }
+
+    .why-slider {
+        height: 400px;
+    }
+
+    .why-image-overlay {
+        padding: 30px;
+    }
+
+    .why-text-content h3 {
+        font-size: 20px;
+    }
+
+    .why-text-content p {
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
+
+    .why-arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .why-arrow.prev {
+        left: 10px;
+    }
+
+    .why-arrow.next {
+        right: 10px;
+    }
 
 
     .branch-section {
         padding: 70px 0;
     }
+
     .branch-container {
         padding: 0 24px;
     }
+
     .branch-header h2 {
         font-size: 26px;
     }
+
     .branch-accent-desc {
         font-size: 16px;
     }
+
     .branch-sub-desc {
         font-size: 13px;
         word-break: keep-all;
     }
+
     .branch-grid {
         grid-template-columns: 1fr;
         gap: 20px;
         max-width: 340px;
     }
+
     .branch-card {
         min-height: 200px;
         padding: 30px;
     }
+
     .branch-title {
         font-size: 20px;
     }
+
     .branch-more {
         bottom: 24px;
         left: 30px;
     }
 
-    .rehab-preview-section { padding: 80px 0; }
-    .rehab-preview-container { padding: 0 24px; }
-    .rehab-preview-header h2 { font-size: 28px; }
-    .btn-preview-contact { width: 100%; padding: 18px 24px; font-size: 15px; }
+    .rehab-preview-section {
+        padding: 80px 0;
+    }
 
-    .location-section { padding: 120px 0 80px; }
-    .location-container { padding: 0 24px; }
-    .location-title-box h2 { font-size: 28px; }
-    .location-title-box .branch-desc { font-size: 14px; }
+    .rehab-preview-container {
+        padding: 0 24px;
+    }
 
-    .gallery-arrow { width: 40px; height: 40px; }
-    .gallery-arrow.prev { left: 10px; }
-    .gallery-arrow.next { right: 10px; }
-    .gallery-thumbnails { gap: 8px; }
-    .gallery-thumbnails img { width: calc(20% - 6.4px); border-radius: 8px; }
+    .rehab-preview-header h2 {
+        font-size: 28px;
+    }
 
-    .location-info-grid { grid-template-columns: 1fr; gap: 16px; }
-    .info-item { padding: 30px 20px; }
+    .btn-preview-contact {
+        width: 100%;
+        padding: 18px 24px;
+        font-size: 15px;
+    }
 
-    .location-map-box { height: 320px; }
+    .location-section {
+        padding: 120px 0 80px;
+    }
+
+    .location-container {
+        padding: 0 24px;
+    }
+
+    .location-title-box h2 {
+        font-size: 28px;
+    }
+
+    .location-title-box .branch-desc {
+        font-size: 14px;
+    }
+
+    .gallery-arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .gallery-arrow.prev {
+        left: 10px;
+    }
+
+    .gallery-arrow.next {
+        right: 10px;
+    }
+
+    .gallery-thumbnails {
+        gap: 8px;
+    }
+
+    .gallery-thumbnails img {
+        width: calc(20% - 6.4px);
+        border-radius: 8px;
+    }
+
+    .location-info-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .info-item {
+        padding: 30px 20px;
+    }
+
+    .location-map-box {
+        height: 320px;
+    }
 
 
     .site-footer {
@@ -1989,10 +2486,12 @@ a.people-img-box {
     .footer-info .info-row .divider {
         display: none;
     }
+
     .footer-info .info-row span {
         display: block;
         margin-bottom: 4px;
     }
+
     .footer-info .info-row span:last-child {
         margin-bottom: 0;
     }
@@ -2000,17 +2499,44 @@ a.people-img-box {
 
 /* --- 태블릿 및 모바일 반응형 수치 정밀화 --- */
 @media (max-width: 900px) {
-    .teachers-detail .detail-wrapper { flex-direction: column; gap: 40px; }
-    /* 모바일 환경에서는 세로로 배치되므로 너무 길어지지 않게 화면에 맞춰 조정 */
-    .teachers-detail .detail-img { width: 100%; max-width: 450px; margin: 0 auto; aspect-ratio: 1 / 1; }
-    .teachers-detail .detail-text { width: 100%; }
+    .teachers-detail .detail-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
 
-    .teachers-gallery .round-img { width: 160px; height: 160px; }
-    .gallery-wrapper { gap: 20px; }
+    /* 모바일 환경에서는 세로로 배치되므로 너무 길어지지 않게 화면에 맞춰 조정 */
+    .teachers-detail .detail-img {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .teachers-detail .detail-text {
+        width: 100%;
+    }
+
+    .teachers-gallery .round-img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .gallery-wrapper {
+        gap: 20px;
+    }
 }
 
 @media (max-width: 600px) {
-    .teachers-header h1 { font-size: 32px; }
-    .teachers-gallery .round-img { width: 100px; height: 100px; }
-    .teachers-gallery h3 { font-size: 14px; }
+    .teachers-header h1 {
+        font-size: 32px;
+    }
+
+    .teachers-gallery .round-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .teachers-gallery h3 {
+        font-size: 14px;
+    }
 }
