@@ -571,13 +571,6 @@ body {
     word-break: keep-all;
 }
 
-.program-card:hover .card-image-box img {
-    transform: scale(1.08);
-}
-
-.program-card:hover .card-overlay {
-    opacity: 1;
-}
 
 .step-tag {
     display: inline-block;
@@ -597,6 +590,26 @@ body {
     font-weight: 600;
     color: var(--text-dark);
     letter-spacing: -0.03em;
+}
+
+/* 1. 마우스 올렸을 때 숨겨져 있던 초록색 안내 문구(오버레이) 등장 */
+.program-section .program-card:hover .card-overlay {
+    opacity: 1;
+}
+
+/* 2. 마우스 올렸을 때 사진이 부드럽게 살짝 확대되는 효과 */
+.program-section .program-card:hover .card-image-box img {
+    transform: scale(1.08) !important;
+}
+
+/* 3. 마우스 올렸을 때 카드 전체가 살짝 위로 떠오르는 입체감 */
+.program-section .program-card:hover {
+    transform: translateY(-8px);
+}
+
+/* 4. 마우스 올렸을 때 카드 이미지 박스의 그림자가 진해짐 */
+.program-section .program-card:hover .card-image-box {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 
@@ -1710,15 +1723,42 @@ a.people-img-box {
     border-bottom: 1px solid rgba(67, 157, 133, 0.05);
 }
 
+/* ==========================================================================
+   프로그램 페이지(program.html) 전용: 카드 살짝 떠오르는 호버 효과
+   ========================================================================== */
+.program-overview-section .program-card.scroll-anchor-btn {
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+/* 1. 마우스 올렸을 때 전체 카드가 위로 8px 살짝 떠오름 */
+.program-overview-section .program-card.scroll-anchor-btn:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: none !important;
+}
+
+/* 2. 떠오를 때 그림자도 자연스럽게 진해지도록 처리 */
+.program-overview-section .program-card:hover .card-image-box {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* 3. index.html처럼 사진이 커지거나 오버레이 글씨가 나오지 않도록 강력히 차단 */
+.program-overview-section .program-card:hover .card-image-box img {
+    transform: none !important;
+}
+.program-overview-section .program-card:hover .card-overlay {
+    display: none !important;
+}
+
+
+
+
 /* 퀵 스무스 링크용 커서 손모양 세팅 */
 .program-card.scroll-anchor-btn {
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
-.program-card.scroll-anchor-btn:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(67, 157, 133, 0.15);
-}
+
 
 /* 스크롤 스트리밍 개별 큰 블록 */
 .program-detail-block {
@@ -1844,6 +1884,104 @@ a.people-img-box {
 .why-detail-stream .why-header {
     text-align: center;
     margin-bottom: 40px;
+}
+
+/* 2. WHY THE MATCHUM 중앙 정렬 감성 레이아웃 (why-detail-stream 대체) */
+.why-center-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto 120px;
+    padding: 0 40px;
+}
+.why-center-block:last-child {
+    margin-bottom: 60px;
+}
+.why-center-image {
+    width: 100%;
+    max-width: 860px;
+    aspect-ratio: 16 / 9;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+    background-color: var(--bg-cream);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+.why-center-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(1.03) contrast(0.96);
+}
+.why-center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.why-center-icon {
+    width: 68px;
+    height: 68px;
+    background-color: #E7F2EE;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 20px rgba(67, 157, 133, 0.1);
+}
+.why-center-icon svg {
+    width: 30px;
+    height: 30px;
+    fill: none;
+    stroke: #3b5941;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.why-center-content h3 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c352e;
+    margin: 20px 0;
+    letter-spacing: -0.03em;
+}
+.why-center-content p {
+    font-size: 16px;
+    color: var(--text-gray);
+    line-height: 1.75;
+    font-weight: 300;
+    word-break: keep-all;
+    max-width: 800px;
+}
+
+/* 태블릿/모바일 반응형 최적화 */
+@media (max-width: 768px) {
+    .why-center-block {
+        padding: 0 24px;
+        margin-bottom: 80px;
+    }
+    .why-center-image {
+        aspect-ratio: 4 / 3;
+        border-radius: 20px;
+        margin-bottom: 30px;
+    }
+    .why-center-content h3 {
+        font-size: 24px;
+        margin: 16px 0;
+    }
+    .why-center-icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 16px;
+    }
+    .why-center-icon svg {
+        width: 24px;
+        height: 24px;
+    }
 }
 
 /* ==========================================================================

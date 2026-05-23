@@ -96,8 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 4. 스크롤 페이드인 & 업 애니메이션
     // ==========================================
-    const fadeElements = document.querySelectorAll('.intro-section, .program-section, .why-section, .rounded-image-wrapper, .program-card, .location-title-box, .location-info-grid, .location-map-box, .location-people-section');
-
+    const fadeElements = document.querySelectorAll('.intro-section, .program-section, .why-section, .rounded-image-wrapper, .program-card, .location-title-box, .location-info-grid, .location-map-box, .location-people-section, .why-center-block');
     const fadeOptions = {
         root: null,
         threshold: 0.10,
