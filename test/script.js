@@ -237,26 +237,32 @@ $(document).ready(function() {
         startGalleryAutoPlay();
     }
 
-    // ==========================================
-    // 7. TEACHERS PAGE: 강사 클릭 데이터 교체 로직 (jQuery)
-    // ==========================================
+// ==========================================
+// 7. TEACHERS PAGE: 강사 클릭 데이터 교체 (Fade 효과 적용)
+// ==========================================
     const $galleryItems = $('.gallery-item');
+    const $mainImgContainer = $('#main-img');
     const $mainImg = $('#main-img img');
-    const $mainText = $('#main-text');
+    const $mainTextContainer = $('#main-text');
 
-    if ($galleryItems.length > 0 && $mainImg.length && $mainText.length) {
+    if ($galleryItems.length > 0 && $mainImg.length && $mainTextContainer.length) {
         $galleryItems.on('click', function() {
             const $this = $(this);
 
-            $mainImg.attr('src', $this.attr('data-img'));
-            $mainText.css('opacity', 0);
+            // 1. 먼저 투명도를 0으로 만들어 페이드 아웃
+            $mainImgContainer.css('opacity', 0);
+            $mainTextContainer.css('opacity', 0);
 
             setTimeout(() => {
+                // 2. 투명도가 0일 때 데이터를 교체
+                $mainImg.attr('src', $this.attr('data-img'));
                 $('#instructor-name').text($this.attr('data-name'));
                 $('#instructor-desc').html('<p style="line-height: 1.8;">' + $this.attr('data-desc') + '</p>');
 
-                $mainText.css('opacity', 1);
-            }, 300);
+                // 3. 다시 투명도를 1로 만들어 페이드 인
+                $mainImgContainer.css('opacity', 1);
+                $mainTextContainer.css('opacity', 1);
+            }, 400); // CSS transition 시간과 맞춤
         });
     }
 
