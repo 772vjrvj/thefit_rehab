@@ -42,113 +42,112 @@
     </header>
 
     <main class="contact-page">
-        <div class="contact-container">
-
-            <div class="contact-header">
-                <span class="sub-accent">COUNSELING</span>
-                <h2>상담하기</h2>
-                <p class="header-desc">몸의 작은 불편함이나 프로그램에 대해 궁금하신 점을 편안하게 남겨주세요.<br>재활 전문가들이 세심하고 정성스럽게 답변해 드리겠습니다.</p>
-                <div class="header-line"></div>
+        <section class="contact-section header-section">
+            <div class="contact-container">
+                <div class="contact-header">
+                    <span class="sub-accent">COUNSELING</span>
+                    <h2>상담하기</h2>
+                    <p class="header-desc">몸의 작은 불편함이나 프로그램에 대해 궁금하신 점을 편안하게 남겨주세요.<br>재활 전문가들이 세심하고 정성스럽게 답변해 드리겠습니다.</p>
+                    <div class="header-line"></div>
+                </div>
             </div>
+        </section>
 
-            <div class="contact-form-wrapper">
-                <form id="contactForm" method="POST">
-                    <div class="form-group-row">
+        <section class="contact-section form-section bg-green">
+            <div class="contact-container">
+                <div class="contact-form-wrapper box-white">
+                    <form id="contactForm" method="POST">
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label for="user-name">이름</label>
+                                <input type="text" id="user-name" name="name" placeholder="이름을 입력해 주세요." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="user-email">이메일</label>
+                                <input type="email" id="user-email" name="email" placeholder="답변을 받으실 이메일을 입력해 주세요." required>
+                            </div>
+                        </div>
                         <div class="form-group">
-                            <label for="user-name">이름</label>
-                            <input type="text" id="user-name" name="name" placeholder="이름을 입력해 주세요." required>
+                            <label for="form-title">제목</label>
+                            <input type="text" id="form-title" name="title" placeholder="문의 제목을 입력해 주세요." required>
                         </div>
                         <div class="form-group">
-                            <label for="user-email">이메일</label>
-                            <input type="email" id="user-email" name="email" placeholder="답변을 받으실 이메일을 입력해 주세요." required>
+                            <label for="form-content">내용</label>
+                            <textarea id="form-content" name="content" rows="7" placeholder="상담받고자 하는 통증 증상이나 문의 내용을 자세히 적어주세요." required></textarea>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="form-title">제목</label>
-                        <input type="text" id="form-title" name="title" placeholder="문의 제목을 입력해 주세요." required>
-                    </div>
-                    <div class="form-group">
-                        <label for="form-content">내용</label>
-                        <textarea id="form-content" name="content" rows="7" placeholder="상담받고자 하는 통증 증상이나 문의 내용을 자세히 적어주세요." required></textarea>
-                    </div>
-                    <div class="form-submit-box">
-                        <button type="submit" class="btn-submit">SEND</button>
-                    </div>
-                </form>
-            </div>
-
-            <div class="contact-info-wrapper">
-
-                <div class="info-details-box">
-                    <div class="info-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
-                        <div>
-                            <span>Phone</span>
-                            <a href="tel:010-3057-7542">010-3057-7542</a>
+                        <div class="form-submit-box">
+                            <button type="submit" class="btn-submit">SEND</button>
                         </div>
-                    </div>
-                    <div class="info-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        <div>
-                            <span>Email</span>
-                            <a href="mailto:ksky4329@naver.com">ksky4329@naver.com</a>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        </svg>
-                        <div>
-                            <span>Kakao Plus</span>
-                            <p>더맞춤 재활운동</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                        <div>
-                            <span>Open Hours</span>
-                            <p>평일 09:00~21:00 / 토 10:00~15:00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="social-links-row">
-                    <a href="#" class="social-item blog" target="_blank" aria-label="네이버 블로그">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-item kakao" target="_blank" aria-label="카카오채널">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 3c-5.523 0-10 3.52-10 7.86 0 2.822 1.848 5.29 4.675 6.645-.25.92-.907 3.328-.936 3.443-.053.176.156.248.275.163.13-.095 3.407-2.277 4.708-3.237.42.046.85.071 1.278.071 5.523 0 10-3.52 10-7.86C22 6.52 17.523 3 12 3z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-item youtube" target="_blank" aria-label="유튜브">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M21.582 6.186c-.23-.86-.908-1.538-1.768-1.768C18.254 4 12 4 12 4s-6.254 0-7.814.418c-.86.23-1.538.908-1.768 1.768C2 7.746 2 12 2 12s0 4.254.418 5.814c.23.86.908 1.538 1.768 1.768C7.746 20 12 20 12 20s6.254 0 7.814-.418c.86-.23 1.538-.908 1.768-1.768C22 16.254 22 12 22 12s0-4.254-.418-5.814zM9.996 15.005V8.995L15.26 12l-5.264 3.005z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-item instagram" target="_blank" aria-label="인스타그램">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="closing-phrase">
-                    <p>“더맞춤은 오롯이 회원님의 온전한 치유와 기능 회복만을 위해 존재합니다.<br>망설이지 말고 내 몸의 정렬을 바로잡는 첫걸음을 함께 시작해 보세요.”</p>
+                    </form>
                 </div>
             </div>
+        </section>
 
-        </div>
+        <section class="contact-section info-section">
+            <div class="contact-container">
+                <div class="contact-info-wrapper">
+                    <div class="info-details-box">
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <div>
+                                <span>Phone</span>
+                                <a href="tel:010-3057-7542">010-3057-7542</a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <div>
+                                <span>Email</span>
+                                <a href="mailto:ksky4329@naver.com">ksky4329@naver.com</a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <div>
+                                <span>Kakao Plus</span>
+                                <p>더맞춤 재활운동</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <div>
+                                <span>Open Hours</span>
+                                <p>평일 09:00~21:00 / 토 10:00~15:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links-row">
+                        <a href="#" class="social-item blog" target="_blank" aria-label="네이버 블로그">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/></svg>
+                        </a>
+                        <a href="#" class="social-item kakao" target="_blank" aria-label="카카오채널">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-5.523 0-10 3.52-10 7.86 0 2.822 1.848 5.29 4.675 6.645-.25.92-.907 3.328-.936 3.443-.053.176.156.248.275.163.13-.095 3.407-2.277 4.708-3.237.42.046.85.071 1.278.071 5.523 0 10-3.52 10-7.86C22 6.52 17.523 3 12 3z"/></svg>
+                        </a>
+                        <a href="#" class="social-item youtube" target="_blank" aria-label="유튜브">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.582 6.186c-.23-.86-.908-1.538-1.768-1.768C18.254 4 12 4 12 4s-6.254 0-7.814.418c-.86.23-1.538.908-1.768 1.768C2 7.746 2 12 2 12s0 4.254.418 5.814c.23.86.908 1.538 1.768 1.768C7.746 20 12 20 12 20s6.254 0 7.814-.418c.86-.23 1.538-.908 1.768-1.768C22 16.254 22 12 22 12s0-4.254-.418-5.814zM9.996 15.005V8.995L15.26 12l-5.264 3.005z"/></svg>
+                        </a>
+                        <a href="#" class="social-item instagram" target="_blank" aria-label="인스타그램">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        </a>
+                    </div>
+
+                    <div class="closing-phrase">
+                        <p>“더맞춤은 오롯이 회원님의 온전한 치유와 기능 회복만을 위해 존재합니다.<br>망설이지 말고 내 몸의 정렬을 바로잡는 첫걸음을 함께 시작해 보세요.”</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
@@ -181,7 +180,6 @@
             </div>
         </div>
     </footer>
-
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
