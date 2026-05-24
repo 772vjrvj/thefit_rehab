@@ -479,25 +479,25 @@ body {
 
 .card-image-box {
     position: relative;
-    min-height: 265px;  /* 이미지 높이를 미리 고정 */
     width: 100%;
     aspect-ratio: 1 / 1;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.05);
-    background-color: #f0f0f0;
+    background-color: #f5f5f5;
     margin-bottom: 18px;
+    /* 성능 최적화를 위해 하드웨어 가속 사용 */
+    backface-visibility: hidden;
+    will-change: transform;
+    /* 애니메이션 속도를 조금 더 빠르게 조절 (0.12s -> 0.2s) */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card-image-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    filter: brightness(0.95) contrast(1.15) saturate(0.85) sepia(0.12);
-    opacity: 0.87;
+    transition: transform 0.3s ease;
 }
-
 .rounded-image-wrapper::after,
 .card-image-box::after {
     content: '';
@@ -556,13 +556,31 @@ body {
     letter-spacing: -0.03em;
 }
 
-.program-section .program-card:hover .card-overlay { opacity: 1; }
-.program-section .program-card:hover .card-image-box img { transform: scale(1.08) !important; }
-.program-section .program-card:hover { transform: translateY(-8px); }
-.program-section .program-card:hover .card-image-box { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12); }
+/* 기본 상태 */
+.program-section .program-card .card-image-box img {
+    transition: transform 0.35s ease;
+    will-change: transform;
+}
 
+.card-image-box {
+    transition:
+        transform 0.12s linear,
+        box-shadow 0.12s linear;
+}
 
+.program-section .program-card:hover .card-overlay {
+    opacity: 1;
+}
 
+.program-card:hover .card-image-box img {
+    transform: scale(1.05);
+}
+
+.program-card:hover .card-image-box {
+    transform: translateY(-8px);
+    /* 그림자가 더 부드럽고 명확하게 보이도록 설정 */
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+}
 /* ==========================================================================
    06. WHY SECTION
    ========================================================================== */
@@ -1532,17 +1550,6 @@ a.people-img-box {
     box-shadow: none !important;
 }
 
-.program-overview-section .program-card:hover .card-image-box {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
-}
-
-.program-overview-section .program-card:hover .card-image-box img {
-    transform: none !important;
-}
-
-.program-overview-section .program-card:hover .card-overlay {
-    display: none !important;
-}
 
 .program-card.scroll-anchor-btn {
     cursor: pointer;

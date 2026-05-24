@@ -105,6 +105,15 @@ $(document).ready(function() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     $(entry.target).addClass('is-visible');
+
+                    // 이미지 내부에 loading="lazy"가 되어있어도
+                    // 뷰포트에 들어오는 즉시 투명도를 부드럽게 조정하여 깜빡임 방지
+                    const $img = $(entry.target).find('img');
+                    if ($img.length && !$img.hasClass('loaded')) {
+                        $img.on('load', function() {
+                            $(this).addClass('loaded');
+                        });
+                    }
                     observer.unobserve(entry.target);
                 }
             });
