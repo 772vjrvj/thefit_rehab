@@ -1358,6 +1358,7 @@ a.people-img-box {
 .people-card:hover .people-name { color: #3b5941; }
 .people-card:hover .people-role { background-color: rgba(67, 157, 133, 0.15); }
 
+
 /* ==========================================================================
    10. TEACHERS PAGE
    ========================================================================== */
@@ -1430,9 +1431,25 @@ a.people-img-box {
     margin: 100px auto 0;
 }
 
+/* 💡 1. 갤러리 래퍼 간격을 15px로 더 촘촘하게 조절 */
+.teachers-gallery .gallery-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+/* 💡 2. 아이템이 화면 양옆으로 찢어지듯 늘어나는 현상 방지 */
 .gallery-item {
     text-align: center;
     cursor: pointer;
+    /* flex: 1; 을 아래 코드로 변경하여 중앙으로 타이트하게 모이게 함 */
+    flex: 0 1 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .round-img {
@@ -1443,6 +1460,7 @@ a.people-img-box {
     margin-bottom: 20px;
     border: 5px solid #e7f2ee;
     transition: 0.3s;
+    max-width: 100%;
 }
 
 .round-img:hover {
