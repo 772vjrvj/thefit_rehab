@@ -126,7 +126,7 @@ $(document).ready(function() {
     if ($whySlides.length > 0 && $whyPrevBtn.length && $whyNextBtn.length) {
         let whyIndex = 0;
         const totalWhySlides = $whySlides.length;
-        const whyIntervalTime = 4000;
+        const whyIntervalTime = 5500;
         let whySliderTimer;
 
         function switchWhySlide(nextIndex) {
