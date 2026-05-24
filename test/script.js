@@ -338,3 +338,18 @@ $(document).ready(function() {
         });
     }
 });
+
+// script.js 맨 아래 추가
+$(window).on('load', function() {
+    const hash = window.location.hash;
+    if (hash) {
+        setTimeout(function() {
+            const $target = $(hash);
+            if ($target.length) {
+                $('html, body').animate({
+                    scrollTop: $target.offset().top - 100 // 헤더 높이만큼 보정
+                }, 400);
+            }
+        }, 500);
+    }
+});
