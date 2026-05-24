@@ -1693,6 +1693,68 @@ a.people-img-box {
     object-position: top; /* 핵심 속성! 이미지를 위쪽으로 정렬 */
 }
 
+.teachers-promise-section {
+    width: 100%;
+    padding: 120px 0 80px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+/* 🧼 다른 페이지의 감성을 그대로 이어받은 입체감 있는 내부 독립 크림 박스 */
+.teachers-promise-section .promise-inner-box {
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: var(--bg-cream); /* 사이트 시그니처 맑은 연두크림 톤 */
+    padding: 70px 50px;
+    border-radius: 28px;
+    border: 1px solid rgba(67, 157, 133, 0.12); /* 옅은 에메랄드빛 테두리 경계선 */
+    box-shadow: 0 10px 35px -5px rgba(59, 89, 65, 0.03);
+}
+
+/* 상단 초록색 영문 소제목 가이드 분기 */
+.teachers-promise-section .sub-accent {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #439d85; /* 더맞춤 메인 에메랄드 그린 */
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+}
+
+.teachers-promise-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c352e;
+    letter-spacing: -0.03em;
+    line-height: 1.3;
+}
+
+/* 핵심 본문 텍스트 (자간 및 줄간격 보정) */
+.teachers-promise-section .promise-desc {
+    font-size: 16px;
+    color: #606a61;
+    line-height: 1.85;
+    font-weight: 300;
+    word-break: keep-all;
+}
+
+/* 딥그린 강조 텍스트 처리 */
+.teachers-promise-section .promise-desc strong {
+    color: #3b5941; /* 시그니처 딥그린 */
+    font-weight: 500;
+}
+
+/* 하단 서브 안내선 서체 슬림화 */
+.teachers-promise-section .promise-sub-desc {
+    font-size: 15px;
+    color: #889489;
+    margin-top: 24px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+
+
 /* ==========================================================================
    PROGRAM.HTML 전용 (서브페이지 연속 스크롤 스트리밍 및 프리미엄 교차 레이아웃)
    ========================================================================== */
@@ -1981,6 +2043,25 @@ a.people-img-box {
     .why-center-icon svg {
         width: 24px;
         height: 24px;
+    }
+
+    .teachers-promise-section {
+        padding: 80px 24px 40px;
+    }
+    .teachers-promise-section .promise-inner-box {
+        padding: 50px 24px;
+        border-radius: 20px;
+    }
+    .teachers-promise-section h2 {
+        font-size: 24px;
+    }
+    .teachers-promise-section .promise-desc {
+        font-size: 14.5px;
+        line-height: 1.75;
+    }
+    .teachers-promise-section .promise-sub-desc {
+        font-size: 13.5px;
+        margin-top: 20px;
     }
 }
 
