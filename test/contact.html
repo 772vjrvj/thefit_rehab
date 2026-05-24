@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상담하기 - 더맞춤</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="site-wrapper">
+
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logo.png" alt="하루50분 로고">
+            </a>
+        </div>
+
+        <button class="hamburger" aria-label="메뉴 열기" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="index.html">더맞춤</a></li>
+                <li class="has-dropdown">
+                    <a href="#">지점안내</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="location.html">신도림점</a></li>
+                        <li><a href="location.html">광화문점</a></li>
+                    </ul>
+                </li>
+                <li><a href="program.html">프로그램</a></li>
+                <li><a href="teachers.html">강사진</a></li>
+                <li><a href="contact.html">상담하기</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <div class="contact-container">
+
+            <div class="contact-header">
+                <span class="sub-accent">COUNSELING</span>
+                <h2>상담하기</h2>
+                <p class="header-desc">몸의 작은 불편함이나 프로그램에 대해 궁금하신 점을 편안하게 남겨주세요.<br>재활 전문가들이 세심하고 정성스럽게 답변해 드리겠습니다.</p>
+                <div class="header-line"></div>
+            </div>
+
+            <div class="contact-form-wrapper">
+                <form id="contactForm" method="POST">
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="user-name">이름</label>
+                            <input type="text" id="user-name" name="name" placeholder="이름을 입력해 주세요." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-email">이메일</label>
+                            <input type="email" id="user-email" name="email" placeholder="답변을 받으실 이메일을 입력해 주세요." required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-title">제목</label>
+                        <input type="text" id="form-title" name="title" placeholder="문의 제목을 입력해 주세요." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-content">내용</label>
+                        <textarea id="form-content" name="content" rows="7" placeholder="상담받고자 하는 통증 증상이나 문의 내용을 자세히 적어주세요." required></textarea>
+                    </div>
+                    <div class="form-submit-box">
+                        <button type="submit" class="btn-submit">SEND</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="contact-info-wrapper">
+                <div class="direct-contact">
+                    <p class="info-phone">전화 : <a href="tel:010-3057-7542">010-3057-7542</a></p>
+                    <p class="info-email">이메일 : <a href="mailto:ksky4329@naver.com">ksky4329@naver.com</a></p>
+                </div>
+
+                <div class="social-links-row">
+                    <a href="#" class="social-item blog" target="_blank">네이버 블로그</a>
+                    <a href="#" class="social-item kakao" target="_blank">카카오</a>
+                    <a href="#" class="social-item youtube" target="_blank">유튜브</a>
+                    <a href="#" class="social-item instagram" target="_blank">인스타그램</a>
+                </div>
+
+                <div class="additional-info">
+                    <p><b>카카오 플러스 친구 : 더맞춤 재활운동</b></p>
+                    <p><b>영업시간 : 월~금 09:00~21:00, 토요일 오전 10:00~15:00</b></p>
+                </div>
+
+                <div class="closing-phrase">
+                    <p>“더맞춤은 오롯이 회원님의 온전한 치유와 기능 회복만을 위해 존재합니다.<br>망설이지 말고 내 몸의 정렬을 바로잡는 첫걸음을 함께 시작해 보세요.”</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>더맞춤재활운동센터</h2>
+                <p class="footer-slogan">내 몸에 '더 맞춘' 케어로 일상의 변화를 만드는 프리미엄 재활운동센터</p>
+            </div>
+
+            <div class="footer-info">
+                <div class="info-row">
+                    <span>상호명 : 더맞춤</span>
+                    <span class="divider">|</span>
+                    <span>대표 : 김하늘</span>
+                    <span class="divider">|</span>
+                    <span>사업자등록번호 : 458-16-02251</span>
+                </div>
+                <div class="info-row">
+                    <span>소재지 : 서울특별시 구로구 경인로 644 신도림2차동아아파트 동아2차상가 223호</span>
+                </div>
+                <div class="info-row">
+                    <span>대표전화 : <a href="tel:010-3057-7542">010-3057-7542</a></span>
+                    <span class="divider">|</span>
+                    <span>이메일 : <a href="mailto:ksky4329@naver.com">ksky4329@naver.com</a></span>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">COPYRIGHT ⓒ The 맞춤 All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

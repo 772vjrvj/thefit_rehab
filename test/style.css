@@ -2020,50 +2020,7 @@ a.people-img-box {
     max-width: 800px;
 }
 
-/* 태블릿/모바일 반응형 최적화 */
-@media (max-width: 768px) {
-    .why-center-block {
-        padding: 0 24px;
-        margin-bottom: 80px;
-    }
-    .why-center-image {
-        aspect-ratio: 4 / 3;
-        border-radius: 20px;
-        margin-bottom: 30px;
-    }
-    .why-center-content h3 {
-        font-size: 24px;
-        margin: 16px 0;
-    }
-    .why-center-icon {
-        width: 56px;
-        height: 56px;
-        margin-bottom: 16px;
-    }
-    .why-center-icon svg {
-        width: 24px;
-        height: 24px;
-    }
 
-    .teachers-promise-section {
-        padding: 80px 24px 40px;
-    }
-    .teachers-promise-section .promise-inner-box {
-        padding: 50px 24px;
-        border-radius: 20px;
-    }
-    .teachers-promise-section h2 {
-        font-size: 24px;
-    }
-    .teachers-promise-section .promise-desc {
-        font-size: 14.5px;
-        line-height: 1.75;
-    }
-    .teachers-promise-section .promise-sub-desc {
-        font-size: 13.5px;
-        margin-top: 20px;
-    }
-}
 
 /* ==========================================================================
    신규 추가: OUR MISSION BRAND PROMISE SECTION (중앙 정렬 감성 패키지)
@@ -2159,6 +2116,222 @@ a.people-img-box {
     word-break: keep-all;
 }
 
+
+/* ==========================================================================
+   CONTACT PAGE (상담하기 서브페이지 전용 프리미엄 무드 스타일)
+   ========================================================================== */
+.contact-page {
+    padding: 160px 0 100px;
+    background-color: #ffffff;
+}
+
+.contact-container {
+    max-width: 820px; /* 입력 폼이 지나치게 늘어지지 않도록 최적 가로폭 고정 */
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.contact-header {
+    margin-bottom: 50px;
+}
+
+.contact-header h2 {
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 12px 0;
+    letter-spacing: -0.04em;
+}
+
+/* 타 페이지와 동일한 감성의 독립형 크림색 폼 래퍼 */
+.contact-form-wrapper {
+    background-color: var(--bg-cream);
+    padding: 50px 45px;
+    border-radius: 28px;
+    border: 1px solid rgba(67, 157, 133, 0.12);
+    box-shadow: 0 10px 35px -5px rgba(59, 89, 65, 0.03);
+    margin-bottom: 60px;
+    text-align: left; /* 내부 레이블 및 정렬은 기입 편의상 좌측 정렬 */
+}
+
+.form-group-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group-row .form-group {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    padding-left: 4px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 14.5px;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    color: var(--text-dark);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* 입력 필드 활성화 시 시그니처 에메랄드 컬러로 투명 광채 효과 */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #439d85;
+    box-shadow: 0 0 8px rgba(67, 157, 133, 0.15);
+}
+
+.form-submit-box {
+    text-align: center;
+    margin-top: 32px;
+}
+
+.btn-submit {
+    display: inline-block;
+    width: 180px;
+    padding: 14px 0;
+    background-color: #3b5941; /* 브랜드 메인 딥그린 */
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(59, 89, 65, 0.1);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-submit:hover {
+    background-color: #439d85;
+    box-shadow: 0 8px 20px rgba(67, 157, 133, 0.2);
+    transform: translateY(-2px);
+}
+
+/* 하단 부가 정보 및 SNS 채널 정렬 스타일 */
+.contact-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.direct-contact {
+    font-size: 18px;
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+.direct-contact a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.direct-contact a:hover {
+    color: #439d85;
+}
+
+/* SNS 채널 가로 1줄 정렬화 구조 */
+.social-links-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 8px 0;
+}
+
+.social-item {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-gray);
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+}
+
+.social-item:hover {
+    background-color: #E7F2EE;
+    color: #3b5941;
+    border-color: rgba(67, 157, 133, 0.2);
+}
+
+.additional-info {
+    font-size: 15.5px;
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+.closing-phrase {
+    margin-top: 24px;
+    padding-top: 35px;
+    border-top: 1px dashed rgba(67, 157, 133, 0.18);
+    width: 100%;
+}
+
+.closing-phrase p {
+    font-size: 15px;
+    color: #889489;
+    line-height: 1.8;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* 모바일/스마트폰 완벽 대응 반응형 분기점 */
+@media (max-width: 768px) {
+    .contact-page {
+        padding: 120px 0 60px;
+    }
+    .contact-form-wrapper {
+        padding: 40px 20px;
+        border-radius: 20px;
+    }
+    .form-group-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .direct-contact {
+        font-size: 16px;
+    }
+    .social-links-row {
+        gap: 8px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 모바일에서는 깔끔하게 2개씩 2줄 */
+        width: 100%;
+        max-width: 320px;
+    }
+    .social-item {
+        text-align: center;
+        font-size: 13px;
+        padding: 8px 0;
+    }
+}
+
+
+
+
+
 /* 반응형 분기점 정밀화 (태블릿 및 모바일 스마트폰) */
 @media (max-width: 992px) {
     .detail-block-container {
@@ -2183,14 +2356,6 @@ a.people-img-box {
         margin: 0 auto;
     }
     .promise-card { padding: 40px 24px; }
-}
-
-@media (max-width: 768px) {
-    .subpage-header { padding: 120px 20px 40px; }
-    .subpage-header h2 { font-size: 28px; }
-    .program-detail-block { padding: 80px 0; }
-    .promise-header h2 { font-size: 26px; }
-    .promise-main-text { font-size: 15px; }
 }
 
 
@@ -2581,6 +2746,53 @@ a.people-img-box {
         right: 10px;
     }
 
+
+    .why-center-block {
+        padding: 0 24px;
+        margin-bottom: 80px;
+    }
+    .why-center-image {
+        aspect-ratio: 4 / 3;
+        border-radius: 20px;
+        margin-bottom: 30px;
+    }
+    .why-center-content h3 {
+        font-size: 24px;
+        margin: 16px 0;
+    }
+    .why-center-icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 16px;
+    }
+    .why-center-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .teachers-promise-section {
+        padding: 80px 24px 40px;
+    }
+    .teachers-promise-section .promise-inner-box {
+        padding: 50px 24px;
+        border-radius: 20px;
+    }
+    .teachers-promise-section h2 {
+        font-size: 24px;
+    }
+    .teachers-promise-section .promise-desc {
+        font-size: 14.5px;
+        line-height: 1.75;
+    }
+    .teachers-promise-section .promise-sub-desc {
+        font-size: 13.5px;
+        margin-top: 20px;
+    }
+    .subpage-header { padding: 120px 20px 40px; }
+    .subpage-header h2 { font-size: 28px; }
+    .program-detail-block { padding: 80px 0; }
+    .promise-header h2 { font-size: 26px; }
+    .promise-main-text { font-size: 15px; }
 
     .branch-section {
         padding: 70px 0;
