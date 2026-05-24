@@ -2059,9 +2059,11 @@ a.people-img-box {
 
 .social-links-row {
     display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 10px;
+    justify-content: center; /* 핵심: 가로축 중앙 정렬 */
+    align-items: center;
+    gap: 16px; /* 아이콘 간의 간격 */
+    margin-top: 24px;
+    width: 100%;
 }
 
 .social-item {
@@ -2211,6 +2213,45 @@ a.people-img-box {
 .program-grid .program-card:nth-child(2) { transition-delay: 0.25s; }
 .program-grid .program-card:nth-child(3) { transition-delay: 0.4s; }
 .program-grid .program-card:nth-child(4) { transition-delay: 0.55s; }
+
+/* =========================================
+   [추가된 스타일] 모바일 줄바꿈, 플로팅 버튼, SNS 정렬
+   ========================================= */
+
+/* 1. 모바일 줄바꿈용 클래스 (기본은 안 보이게) */
+.mobile-only {
+    display: none;
+}
+
+/* 2. 우측 하단 고정 상담하기 플로팅 버튼 */
+.floating-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 64px;
+    height: 64px;
+    background-color: #3b5941;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 20px rgba(59, 89, 65, 0.25);
+    z-index: 990;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.floating-btn svg {
+    width: 28px;
+    height: 28px;
+    transition: transform 0.3s ease;
+}
+
+.floating-btn:hover {
+    background-color: #439d85;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(67, 157, 133, 0.3);
+}
+
 
 
 /* ==========================================================================
@@ -2468,16 +2509,12 @@ a.people-img-box {
         gap: 12px;
     }
     .social-links-row {
-        gap: 12px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        width: 100%;
-        max-width: 320px;
+        gap: 12px; /* 모바일에서는 간격을 조금 더 좁게 */
     }
+
     .social-item {
-        text-align: center;
-        font-size: 13px;
-        padding: 8px 0;
+        width: 44px; /* 모바일 전용 아이콘 크기 */
+        height: 44px;
     }
 
     /* Footer */
@@ -2489,6 +2526,38 @@ a.people-img-box {
         margin-bottom: 4px;
     }
     .footer-info .info-row span:last-child { margin-bottom: 0; }
+
+    /* 모바일에서만 줄바꿈 표시 */
+    .mobile-only {
+        display: block;
+    }
+
+    /* 플로팅 버튼 크기 조절 */
+    .floating-btn {
+        bottom: 25px;
+        right: 25px;
+        width: 56px;
+        height: 56px;
+    }
+
+    /* contact.html의 SNS 아이콘을 한 줄로 정렬 */
+    .header-social {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        margin-top: 24px;
+    }
+
+    .header-social .social-item {
+        width: 44px;
+        height: 44px;
+    }
+
+    /* 맺음말 문장 중앙 정렬 */
+    .closing-phrase p {
+        text-align: center;
+    }
 }
 
 /* --- 모바일 스몰 구간 (최대 600px) --- */
